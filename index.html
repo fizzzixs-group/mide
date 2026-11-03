@@ -2863,6 +2863,22 @@ body{
 .ws-lot-actions .ws-btn{ flex:1; padding:8px 4px; font-size:11.5px; }
 .ws-lot-card{ cursor:default; }
 
+/* запрет выделения текста — это игра, а не документ */
+html, body, #app, #modal, .overlay {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+input, textarea, [contenteditable="true"] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+}
+
 </style>
 </head>
 <body>
@@ -6381,7 +6397,6 @@ const App = {
         '<button class="app-tile" data-act="app-open" data-id="wholesale">' +
         '<span class="app-icon">' + (WS ? WS.appIcon() : '') + '</span>' +
         '<b>Опт</b><i>закупка лотами</i></button>' +
-        '<button class="app-tile soon" disabled><span class="app-icon">·</span><b>Скоро</b><i>новые приложения</i></button>' +
         '</div>';
     },
 
