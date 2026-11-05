@@ -448,6 +448,11 @@ button { cursor: pointer; border: 0; background: none; }
 .preset:active { background: #e6ebf2; }
 .hint-line { font-size: 11px; color: var(--muted); margin-top: 8px; line-height: 1.45; }
 .warn-line { font-size: 11px; color: #a3282c; background: var(--red-soft); padding: 8px 10px; border-radius: 9px; margin-top: 8px; line-height: 1.4; }
+/* в тёмной теме текст всегда читаемый */
+html[data-theme="dark"] .warn-line {
+  background: #3a1f1f !important;
+  color: #ff9a95 !important;
+}
 
 /* ---------- тост ---------- */
 .toasts {
@@ -2831,6 +2836,11 @@ body{
 .ws-box-main{ min-width:0; flex:1; display:flex; flex-direction:column; gap:2px; }
 .ws-box-main b{ font-size:13.5px; color:#3b2a19; }
 .ws-box-main span{ font-size:11.5px; color:#8a6b47; }
+.ws-box.red{ background:#fdecec; border-color:#f0c3c3; }
+.ws-box.red > svg{ color:#d33a3a; }
+.ws-box.red .ws-box-main b{ color:#6b1f1f; }
+.ws-box.red .ws-box-main span{ color:#a34a4a; }
+.ws-box.red .ws-btn.primary{ background:#d33a3a; border-color:#d33a3a; }
 .ws-list{ max-height:44vh; overflow:auto; margin-top:8px; }
 .ws-item{ display:flex; justify-content:space-between; gap:10px; padding:7px 0; border-bottom:1px solid var(--line,#e6e9ee); font-size:13px; }
 .ws-item b{ color:var(--muted,#6b7280); font-weight:600; white-space:nowrap; }
@@ -2863,6 +2873,84 @@ body{
 .ws-lot-actions .ws-btn{ flex:1; padding:8px 4px; font-size:11.5px; }
 .ws-lot-card{ cursor:default; }
 
+/* ---------- чёрный рынок ---------- */
+.app-icon.dark{ background:linear-gradient(160deg,#2a2d35,#14171c) !important; color:#d0a15c !important; }
+.bk-head{ display:flex; justify-content:space-between; align-items:baseline; margin:4px 0 8px; }
+.bk-head b{ font-size:16px; }
+.bk-head span{ font-size:11px; color:var(--av-muted); }
+.bk-head span b{ font-size:11px; color:#e5484d; }
+.bk-lock{ background:var(--av-card,#fff); border:1px solid var(--av-line,#e6e9ee); border-radius:16px; padding:18px; text-align:center; }
+.bk-lock-icon{ font-size:32px; line-height:1; margin-bottom:8px; color:#e5484d; }
+.bk-lock b{ font-size:16px; }
+.bk-lock p{ font-size:12.5px; color:var(--av-muted); line-height:1.5; margin:8px 0 14px; }
+.bk-access{ width:100%; padding:12px; font-size:14px; }
+.bk-warn{ font-size:11px; color:#b06a2c; text-align:center; margin:14px 0 0; }
+.bk-thumb{ position:relative; }
+.bk-photo{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+.bk-photo .pphoto{ height:168px !important; width:auto !important; max-width:100% !important; object-fit:contain !important; }
+.bk-disc{ position:absolute; z-index:2; top:8px; left:8px; background:#e5484d; color:#fff; font-size:11px; font-weight:800; padding:4px 8px; border-radius:7px; }
+.bk-modal-pic{ height:140px; display:flex; align-items:center; justify-content:center; background:#fff; border-radius:12px; overflow:hidden; }
+.bk-modal-pic .pphoto{ height:128px !important; width:auto !important; max-height:128px !important; object-fit:contain !important; }
+
+.kit-list{ margin-top:6px; }
+.kit-row{ display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--line,#e6e9ee); font-size:13px; }
+.kit-row:last-child{ border-bottom:0; }
+.kit-row b{ font-weight:700; }
+.kit-row b.has{ color:var(--green,#12a150); }
+.kit-row b.no{ color:var(--red,#e5484d); }
+
+.chat-presets{ display:flex; flex-direction:column; gap:8px; max-height:40vh; overflow-y:auto; padding:2px 0 4px; }
+.preset-btn{
+  width:100%; text-align:left; padding:12px 14px; border-radius:12px;
+  border:1.5px solid #0aa2f5; background:transparent; color:#0aa2f5;
+  font-size:13.5px; font-weight:600; line-height:1.3;
+}
+.preset-btn:active{ background:rgba(10,162,245,.12); }
+.preset-btn.truth{ border-color:#12a150; color:#12a150; }
+.preset-btn.lie{ border-color:#e5484d; color:#e5484d; }
+.card-os{ order:3; font-size:10.5px; color:var(--av-muted,#6b7280); margin-top:1px; }
+
+/* ---------- jailbreak ---------- */
+.app-icon.jail{ background:linear-gradient(160deg,#1e2a3a,#0f1720) !important; color:#63caff !important; }
+.jb-head{ display:flex; align-items:center; gap:8px; margin:2px 0 12px; }
+.jb-head b{ font-size:17px; }
+.jb-head span{ margin-left:auto; font-size:11.5px; color:var(--av-muted); }
+.jb-list{ display:flex; flex-direction:column; gap:8px; }
+.jb-phone{ display:flex; align-items:center; gap:12px; padding:10px; border:1px solid var(--av-line,#2a2f3a); border-radius:14px; background:var(--av-card,#191c24); }
+.jb-phone.dead{ opacity:.5; }
+.jb-pic{ width:56px; height:68px; border-radius:10px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; flex:0 0 56px; }
+.jb-pic .pphoto{ max-height:60px; max-width:100%; object-fit:contain; }
+.jb-pic.big{ width:80px; height:96px; flex:0 0 80px; }
+.jb-pic.big .pphoto{ max-height:86px; }
+.jb-info{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.jb-info b{ font-size:13.5px; }
+.jb-info span{ font-size:11.5px; color:var(--av-muted); }
+.jb-info i{ font-style:normal; font-size:10.5px; color:var(--av-muted); }
+.jb-go{ font-size:20px; color:var(--av-muted); }
+.jb-card{ display:flex; gap:12px; align-items:center; padding:12px; border:1px solid var(--av-line,#2a2f3a); border-radius:16px; background:var(--av-card,#191c24); margin-bottom:12px; }
+.jb-card-info{ display:flex; flex-direction:column; gap:3px; }
+.jb-card-info b{ font-size:14px; }
+.jb-card-info span{ font-size:11.5px; color:var(--av-muted); }
+.jb-bad{ color:#e5484d !important; }
+.jb-actions{ display:flex; flex-direction:column; gap:8px; }
+.jb-btn{ text-align:left; padding:13px 14px; border-radius:12px; border:1px solid var(--av-line,#2a2f3a); background:var(--av-card,#191c24); color:inherit; font-size:13.5px; font-weight:600; }
+.jb-btn:disabled{ opacity:.45; }
+.jb-btn.danger{ color:#e5484d; border-color:#f0c3c3; }
+.jb-track{ position:relative; height:46px; background:var(--av-sub,#f2f5f9); border-radius:12px; overflow:hidden; margin:14px 0; }
+.jb-zone{ position:absolute; top:0; bottom:0; background:#12a150; opacity:.35; }
+.jb-marker{ position:absolute; top:4px; bottom:4px; width:4px; background:#0aa2f5; border-radius:2px; }
+.jb-hint{ font-size:12px; background:var(--av-sub,#f2f5f9); padding:8px 10px; border-radius:9px; margin-bottom:10px; }
+.jb-cmds{ display:flex; flex-direction:column; gap:7px; }
+.jb-cmd{ text-align:left; padding:11px 12px; border-radius:10px; border:1px solid var(--av-line,#2a2f3a); background:var(--av-card,#191c24); color:inherit; font-family:ui-monospace,monospace; font-size:12px; }
+.jb-oslist{ max-height:52vh; overflow:auto; display:flex; flex-direction:column; gap:6px; }
+.jb-os{ display:flex; justify-content:space-between; align-items:center; gap:8px; padding:10px 12px; border-radius:10px; border:1px solid var(--av-line,#2a2f3a); background:var(--av-card,#191c24); color:inherit; }
+.jb-os span{ font-size:10.5px; color:var(--av-muted); }
+.jb-os.good{ border-color:#12a150; }
+.jb-os.mid{ border-color:#d99a00; }
+.jb-os.bad{ border-color:#e5484d; }
+.jb-os.ips{ border-color:#7c5cff; background:rgba(124,92,255,.12); }
+.jb-os.ips b{ color:#9b86ff; }
+
 /* запрет выделения текста — это игра, а не документ */
 html, body, #app, #modal, .overlay {
   -webkit-user-select: none;
@@ -2879,9 +2967,448 @@ input, textarea, [contenteditable="true"] {
   -webkit-touch-callout: default;
 }
 
+/* ============================================================
+   MIDE 2.0 — визуальный рефреш: мягкие тени, стекло, анимации
+   ============================================================ */
+:root{
+  --mide-accent:#0aa2f5;
+  --mide-accent-2:#5b8cff;
+  --mide-grad:linear-gradient(135deg,#0aa2f5 0%,#4f8bff 100%);
+  --mide-radius:18px;
+}
+
+/* фон с мягкими пятнами света */
+html[data-theme="dark"] body,
+html[data-theme="dark"] #app{
+  background:
+    radial-gradient(900px 520px at 12% -12%, rgba(10,162,245,.12), transparent 60%),
+    radial-gradient(760px 460px at 105% -5%, rgba(124,92,255,.10), transparent 55%),
+    radial-gradient(700px 500px at 50% 115%, rgba(10,162,245,.06), transparent 60%),
+    var(--av-bg) !important;
+}
+
+/* шапка — стекло */
+.av-header{
+  background:rgba(13,15,19,.72) !important;
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid rgba(255,255,255,.06) !important;
+}
+html[data-theme="light"] .av-header{ background:rgba(255,255,255,.82) !important; border-bottom:1px solid rgba(15,17,22,.06) !important; }
+
+/* нижнее меню — стекло и подсветка активной вкладки */
+.av-bottom{
+  background:rgba(13,15,19,.86) !important;
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  border-top:1px solid rgba(255,255,255,.07) !important;
+}
+html[data-theme="light"] .av-bottom{ background:rgba(255,255,255,.9) !important; border-top:1px solid rgba(15,17,22,.07) !important; }
+.av-nav{ transition:color .2s ease !important; }
+.av-nav svg{ transition:transform .22s cubic-bezier(.22,1,.36,1) !important; }
+.av-nav.on{ color:var(--mide-accent) !important; background:linear-gradient(180deg,rgba(10,162,245,.16),rgba(10,162,245,0) 78%) !important; border-radius:14px !important; }
+.av-nav.on svg{ transform:translateY(-1px) scale(1.08); }
+.av-nav:active svg{ transform:scale(.9); }
+
+/* карточки */
+.card{ transition:transform .18s ease, opacity .18s ease !important; }
+.card:active{ transform:scale(.985); }
+.card .thumb{
+  border-radius:16px !important;
+  box-shadow:0 10px 28px rgba(0,0,0,.22);
+  transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+}
+html[data-theme="light"] .card .thumb{ box-shadow:0 8px 22px rgba(16,24,40,.10); }
+.card:hover .thumb{ transform:translateY(-3px); box-shadow:0 16px 34px rgba(0,0,0,.28); }
+.card-price, .price-big, .log-balance, .jb-card-info b{ font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
+.badge{ border-radius:8px !important; }
+.badge.deal{ box-shadow:0 2px 10px rgba(0,180,90,.22); }
+
+/* кнопки */
+.btn{
+  transition:transform .12s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease !important;
+}
+.btn:active, .ws-btn:active, .jb-btn:active, .preset-btn:active{ transform:scale(.97); }
+.btn.primary{
+  background:var(--mide-grad) !important;
+  border:0 !important;
+  color:#fff !important;
+  box-shadow:0 6px 18px rgba(10,162,245,.30) !important;
+}
+.btn.primary:active{ box-shadow:0 3px 10px rgba(10,162,245,.24) !important; }
+.btn.danger{ transition:transform .12s ease !important; }
+
+/* поля ввода */
+.field input, .field select, .key-input, .av-search{
+  transition:box-shadow .2s ease, border-color .2s ease !important;
+}
+.field input:focus, .field select:focus, .key-input:focus{
+  border-color:var(--mide-accent) !important;
+  box-shadow:0 0 0 3px rgba(10,162,245,.18) !important;
+  outline:none !important;
+}
+
+/* чат */
+.chat-wrap{ gap:9px !important; padding:14px 14px 8px !important; }
+.msg{
+  border-radius:18px !important;
+  padding:10px 13px !important;
+  line-height:1.45 !important;
+  font-size:13px !important;
+}
+.msg.them{
+  background:var(--av-sub) !important;
+  color:var(--av-ink) !important;
+  border-radius:18px 18px 18px 6px !important;
+}
+.msg.me{
+  background:var(--mide-grad) !important;
+  color:#fff !important;
+  border-radius:18px 18px 6px 18px !important;
+  box-shadow:0 5px 16px rgba(10,162,245,.25);
+}
+.msg.sys:not(.good):not(.bad){ background:transparent !important; color:var(--av-muted) !important; font-size:11px !important; }
+.msg:last-child{ animation:msgIn .2s ease-out both; }
+@keyframes msgIn{ from{opacity:0; transform:translateY(7px) scale(.98);} to{opacity:1; transform:none;} }
+
+/* композер — стекло */
+.composer{
+  background:rgba(21,24,30,.88) !important;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-top:1px solid rgba(255,255,255,.06) !important;
+}
+html[data-theme="light"] .composer{ background:rgba(255,255,255,.92) !important; border-top:1px solid rgba(15,17,22,.07) !important; }
+.send-btn{ box-shadow:0 6px 16px rgba(10,162,245,.28); }
+.meet-cta{ box-shadow:0 8px 22px rgba(18,161,80,.28); }
+.preset-btn{ transition:background .18s ease, transform .12s ease, border-color .18s ease !important; }
+.preset-btn:hover{ background:rgba(10,162,245,.08); }
+
+/* оверлеи и модалки */
+.overlay{ backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+.overlay.open .ov-head{ border-bottom:1px solid rgba(255,255,255,.06); }
+.modal-wrap.open .modal{ animation:modalSpring .3s cubic-bezier(.22,1,.36,1) both !important; }
+@keyframes modalSpring{
+  0%{ opacity:0; transform:translateY(22px) scale(.96); }
+  60%{ opacity:1; transform:translateY(-3px) scale(1.004); }
+  100%{ opacity:1; transform:none; }
+}
+
+/* склад, профиль, жб */
+.stock-item{ transition:transform .15s ease, border-color .2s ease !important; }
+.stock-item:active{ transform:scale(.99); }
+.prof-card{ border-radius:20px !important; }
+.jb-phone, .jb-btn, .jb-os{ transition:transform .15s ease, border-color .2s ease, background .2s ease !important; }
+.jb-btn:active, .jb-phone:active{ transform:scale(.985); }
+
+/* переключение вкладок */
+.view.active{ animation:viewIn .22s ease-out; }
+@keyframes viewIn{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+
+/* тосты */
+.toast{ animation:toastIn .25s cubic-bezier(.22,1,.36,1) both; }
+@keyframes toastIn{ from{ opacity:0; transform:translateY(-8px) scale(.96); } to{ opacity:1; transform:none; } }
+
+/* скроллбар */
+::-webkit-scrollbar{ width:6px; height:6px; }
+::-webkit-scrollbar-thumb{ background:rgba(128,140,160,.28); border-radius:99px; }
+::-webkit-scrollbar-track{ background:transparent; }
+
+/* плавная смена темы */
+html, body, .av-header, .av-bottom, .card, .stock-item, .prof-card, .modal, .composer{
+  transition:background-color .28s ease, color .28s ease, border-color .28s ease;
+}
+
+/* мелкие штрихи */
+.av-pill{ background:var(--av-sub) !important; border:1px solid var(--av-line) !important; border-radius:10px !important; }
+.av-next{ color:var(--mide-accent) !important; font-weight:700 !important; }
+.section-title{ letter-spacing:-.01em; }
+.field label{ text-transform:uppercase; letter-spacing:.05em; font-size:10.5px !important; }
+.dtag{ border-radius:7px !important; }
+.prof-h{ letter-spacing:-.01em; }
+.av-search{ border-radius:14px !important; }
+.av-search-go{ border-radius:10px !important; }
+.av-btn-cat{ border-radius:14px !important; }
+
+/* пока открыт оверлей — нижнее меню не мешает */
+body.ov-open .av-bottom,
+html body.ov-open .av-bottom{ display:none !important; }
+#ov-listing .ov-foot{ position: static !important; }
+@media (max-width: 520px){
+  .overlay .gallery, .overlay .gallery-view{ height: 300px !important; }
+}
+/* меню скрыто — лишние отступы под ним не нужны */
+@media (max-width: 760px){
+  .overlay .ov-foot, .overlay .buy-bar{ margin-bottom: 0 !important; }
+  .overlay > .detail, .overlay > .ov-body, .overlay > .chat-body{ padding-bottom: 16px !important; }
+  .overlay .composer{ padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important; }
+  .overlay .chat-input, .overlay .chat-input-row{ margin-bottom: 0 !important; }
+}
+
+/* страница объявления */
+.overlay .price-row{ align-items:baseline !important; gap:10px !important; margin:16px 0 6px !important; }
+.overlay .price-big{ font-size:32px !important; letter-spacing:-.04em !important; line-height:1 !important; font-variant-numeric:tabular-nums; }
+.overlay .price-sub{ font-size:12px !important; color:var(--av-muted) !important; }
+.overlay .mkt-line{ background:var(--av-sub) !important; border:1px solid var(--av-line) !important; border-radius:12px !important; padding:10px 12px !important; }
+.overlay .facts{ gap:6px !important; margin-top:12px !important; flex-wrap:wrap !important; }
+.overlay .pill{ background:var(--av-sub) !important; border:1px solid var(--av-line) !important; border-radius:9px !important; padding:7px 10px !important; font-size:12px !important; }
+.overlay .detail h3{ letter-spacing:-.02em !important; }
+.overlay .desc{ color:var(--av-muted) !important; line-height:1.55 !important; }
+.overlay .ov-foot .btn,
+.overlay .buy-bar .btn{ border-radius:14px !important; }
+.ov-head .avatar{ box-shadow:0 4px 14px rgba(0,0,0,.18); }
+
+/* склад */
+.stock-item{ border-radius:16px !important; }
+.stock-grid .nm{ letter-spacing:-.01em; }
+.stock-grid .val{ color:var(--mide-accent) !important; font-weight:700; }
+
+/* профиль */
+.prof-card{ border:1px solid var(--av-line) !important; }
+.prof-h{ font-size:15px !important; }
+
+/* приложения */
+.app-tile .app-icon{ transition:transform .18s ease, box-shadow .25s ease; }
+.app-tile:active .app-icon{ transform:scale(.93); }
+.app-tile b{ letter-spacing:-.01em; }
+
+/* модалки и поля */
+.modal h3{ letter-spacing:-.02em !important; }
+.modal .btn{ border-radius:12px !important; }
+.field input, .field select{ border-radius:12px !important; }
+
+/* ============================================================
+   LIQUID GLASS — включается отдельным переключателем
+   ============================================================ */
+:root{
+  --lg-surface: var(--av-card, #15181e);
+  --lg-surface-2: var(--av-card, #15181e);
+  --lg-border: var(--av-line, #252a33);
+  --lg-hi: none;
+  --lg-shadow: 0 8px 20px rgba(0,0,0,.18);
+  --lg-blur: none;
+  --lg-blur-sm: none;
+  --lg-bar: var(--av-card, #15181e);
+  --lg-modal: var(--av-card, #15181e);
+}
+html.glass-on{
+  --lg-surface: rgba(255,255,255,.055);
+  --lg-surface-2: rgba(255,255,255,.09);
+  --lg-border: rgba(255,255,255,.13);
+  --lg-hi: inset 0 1px 0 rgba(255,255,255,.18), inset 0 0 0 1px rgba(255,255,255,.035);
+  --lg-shadow: 0 10px 30px rgba(0,0,0,.24);
+  --lg-blur: blur(22px) saturate(170%);
+  --lg-blur-sm: blur(12px) saturate(140%);
+  --lg-bar: rgba(17,20,26,.52);
+  --lg-modal: rgba(21,24,31,.88);
+}
+html[data-theme="light"]{
+  --lg-surface: #ffffff;
+  --lg-surface-2: #ffffff;
+  --lg-border: var(--av-line, #e8eaed);
+  --lg-shadow: 0 8px 20px rgba(16,24,40,.08);
+  --lg-bar: var(--av-card, #ffffff);
+  --lg-modal: var(--av-card, #ffffff);
+}
+html.glass-on[data-theme="light"]{
+  --lg-surface: rgba(255,255,255,.66);
+  --lg-surface-2: rgba(255,255,255,.86);
+  --lg-border: rgba(15,17,22,.09);
+  --lg-hi: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.5);
+  --lg-shadow: 0 10px 26px rgba(16,24,40,.10);
+  --lg-bar: rgba(255,255,255,.60);
+  --lg-modal: rgba(255,255,255,.94);
+}
+
+/* панели */
+.av-header, .av-bottom, .overlay .ov-head, .composer{
+  background: var(--lg-bar) !important;
+  backdrop-filter: var(--lg-blur) !important;
+  -webkit-backdrop-filter: var(--lg-blur) !important;
+  border-color: var(--lg-border) !important;
+}
+.modal{
+  background: var(--lg-modal) !important;
+  backdrop-filter: var(--lg-blur) !important;
+  -webkit-backdrop-filter: var(--lg-blur) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-shadow) !important;
+}
+
+/* поверхности */
+.stock-item, .prof-card, .jb-card, .jb-btn, .jb-os, .ws-btn,
+.field input, .key-input, .av-search, .msg.them, .av-pill{
+  background: var(--lg-surface) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-shadow), var(--lg-hi) !important;
+  backdrop-filter: var(--lg-blur-sm) !important;
+  -webkit-backdrop-filter: var(--lg-blur-sm) !important;
+}
+.av-search{ border-color: rgba(10,162,245,.55) !important; }
+
+/* кнопки */
+.btn.ghost, .theme-row .btn:not(.primary), .qbtn{
+  background: var(--lg-surface) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-hi) !important;
+  backdrop-filter: var(--lg-blur-sm) !important;
+  -webkit-backdrop-filter: var(--lg-blur-sm) !important;
+  color: var(--av-ink) !important;
+}
+.theme-row .btn.primary{ color:#fff !important; background:var(--mide-grad) !important; }
+
+/* «мои» сообщения */
+.msg.me{
+  background: linear-gradient(135deg, rgba(10,162,245,.92), rgba(79,139,255,.88)) !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  box-shadow: 0 8px 22px rgba(10,162,245,.28), inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+
+/* готовые фразы */
+.preset-btn{
+  background: rgba(10,162,245,.08) !important;
+  border: 1px solid rgba(10,162,245,.42) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.10) !important;
+}
+.preset-btn.truth{ border-color: rgba(18,161,80,.55) !important; background: rgba(18,161,80,.08) !important; }
+.preset-btn.lie{ border-color: rgba(229,72,77,.55) !important; background: rgba(229,72,77,.08) !important; }
+
+/* скругления панелей */
+.av-bottom{
+  border-radius: 20px 20px 0 0 !important;
+  overflow: hidden !important;
+  border-top: 1px solid var(--lg-border) !important;
+  box-shadow: 0 -12px 34px rgba(0,0,0,.22) !important;
+}
+.av-header{
+  border-radius: 0 0 20px 20px !important;
+  overflow: hidden !important;
+  border-bottom: 1px solid var(--lg-border) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18) !important;
+}
+
+/* чат: готовые фразы — компактные чипы, поле ввода всегда большое */
+.chat-presets{
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-height: none !important;
+  gap: 8px !important;
+  padding: 2px 0 8px !important;
+  -webkit-overflow-scrolling: touch;
+}
+.chat-presets .preset-btn{
+  width: auto !important;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 9px 14px !important;
+  border-radius: 999px !important;
+  font-size: 12.5px !important;
+  font-weight: 600;
+}
+.input-row{ gap: 9px !important; }
+.input-row input[type=text]{
+  height: 50px !important;
+  border-radius: 16px !important;
+  padding: 0 16px !important;
+  font-size: 15px !important;
+  background: var(--lg-surface-2, rgba(255,255,255,.09)) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-hi) !important;
+  color: var(--av-ink) !important;
+}
+.input-row input[type=text]::placeholder{ color: var(--av-muted) !important; }
+.send-btn{
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px;
+  border-radius: 16px !important;
+  font-size: 18px !important;
+}
+
+/* переключатели: обычные, а с жидким стеклом — линза и упругая анимация */
+.switch{
+  width: 48px !important;
+  height: 28px !important;
+  border-radius: 999px !important;
+  background: #cfd6e0 !important;
+  border: 1px solid rgba(0,0,0,.06) !important;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.18) !important;
+  transition: background .25s ease, box-shadow .25s ease !important;
+  overflow: hidden;
+}
+html[data-theme="dark"] .switch{ background: #333a46 !important; border-color: rgba(255,255,255,.08) !important; }
+html.glass-on .switch{
+  background: rgba(255,255,255,.10) !important;
+  border: 1px solid rgba(255,255,255,.20) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 6px 16px rgba(0,0,0,.22) !important;
+  backdrop-filter: blur(6px) saturate(160%) url(#lg-refract);
+  -webkit-backdrop-filter: blur(6px) saturate(160%);
+}
+html.glass-on[data-theme="light"] .switch{ background: rgba(255,255,255,.55) !important; border-color: rgba(15,17,22,.12) !important; }
+.switch::after{
+  width: 22px !important;
+  height: 22px !important;
+  top: 2px !important;
+  left: 2px !important;
+  background: linear-gradient(180deg,#fff,#e6ebf3) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,.35), inset 0 1px 0 #fff !important;
+  transition: left .28s cubic-bezier(.34,1.56,.64,1), transform .18s ease !important;
+}
+.switch:active::after{ transform: scale(.9); }
+.switch.on{ background: linear-gradient(135deg, #12a150, #0f8a44) !important; }
+html.glass-on .switch.on{ background: linear-gradient(135deg, rgba(10,162,245,.60), rgba(79,139,255,.50)) !important; }
+.switch.on::after{ left: 22px !important; }
+
+/* иконки приложений в стиле жидкого стекла */
+html.glass-on .app-tile .app-icon{
+  background: rgba(255,255,255,.10) !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  color: #f2f6fb !important;
+  backdrop-filter: blur(12px) saturate(160%) url(#lg-refract);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.40), inset 0 -6px 14px rgba(0,0,0,.18), 0 10px 24px rgba(0,0,0,.28) !important;
+}
+html.glass-on .app-tile .app-icon svg{ filter: drop-shadow(0 2px 5px rgba(0,0,0,.35)); }
+html.glass-on .app-tile[data-id="wholesale"] .app-icon{ background: rgba(224,160,80,.16) !important; color: #ffd9a3 !important; }
+html.glass-on .app-tile[data-id="black"] .app-icon{ background: rgba(229,72,77,.16) !important; color: #ffb3b3 !important; }
+html.glass-on .app-tile[data-id="jail"] .app-icon{ background: rgba(99,202,255,.16) !important; color: #b9ecff !important; }
+html.glass-on[data-theme="light"] .app-tile .app-icon{
+  background: rgba(255,255,255,.65) !important;
+  border-color: rgba(15,17,22,.12) !important;
+  color: #10131a !important;
+  box-shadow: inset 0 1px 0 #fff, 0 8px 20px rgba(16,24,40,.12) !important;
+}
+html.glass-on[data-theme="light"] .app-tile[data-id="wholesale"] .app-icon{ color: #8a5320 !important; }
+html.glass-on[data-theme="light"] .app-tile[data-id="black"] .app-icon{ color: #b02127 !important; }
+html.glass-on[data-theme="light"] .app-tile[data-id="jail"] .app-icon{ color: #0b6f9c !important; }
+
+/* поля профиля — как остальные поля ввода */
+.prof-card .field input{
+  height: 48px !important;
+  border-radius: 14px !important;
+  padding: 0 14px !important;
+  font-size: 15px !important;
+  background: var(--lg-surface-2) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-hi) !important;
+  color: var(--av-ink) !important;
+}
+.prof-card .field{ margin-bottom: 12px; }
+
 </style>
+<script>try{if(localStorage.getItem('mide.glass')==='on')document.documentElement.classList.add('glass-on');}catch(e){}</script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="lg-refract" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
 <div id="app">
   <header class="av-header">
     <div class="av-header-top">
@@ -3257,7 +3784,7 @@ input, textarea, [contenteditable="true"] {
     { id: 'student', name: 'Студент', w: 7, budget: [0.75, 0.88], haggle: 0.6, knows: 0.55, skill: 0.4, polite: 0.7, patience: 6, noshow: 0.1, kind: 'normal', open: 'Привет, а стипуха только в субботу. Поторгуемся?' },
     { id: 'shift', name: 'Вахтовик', w: 3, budget: [0.9, 1.0], haggle: 0.2, knows: 0.3, skill: 0.2, polite: 0.6, patience: 4, noshow: 0.06, kind: 'normal', open: 'Здорово. Наличкой, сегодня, где встречаемся?' },
     { id: 'collector', name: 'Коллекционер', w: 2, budget: [1.0, 1.15], haggle: 0.1, knows: 0.9, skill: 0.5, polite: 0.9, patience: 8, noshow: 0.02, kind: 'kind', open: 'Добрый день. Ищу именно эту модель в коллекцию. Состояние важно.' },
-    { id: 'doubt', name: 'Сомневающийся', w: 6, budget: [0.85, 0.95], haggle: 0.45, knows: 0.45, skill: 0.35, polite: 0.85, patience: 12, noshow: 0.18, kind: 'normal', open: 'Здравствуйте. А можно ещё фото? И почему продаёте?' },
+    { id: 'doubt', name: 'Сомневающийся', w: 6, budget: [0.85, 0.95], haggle: 0.45, knows: 0.45, skill: 0.35, polite: 0.85, patience: 12, noshow: 0.18, kind: 'normal', open: 'Здравствуйте. А почему продаёте?' },
     { id: 'silent', name: 'Молчун', w: 3, budget: [0.9, 0.98], haggle: 0.25, knows: 0.5, skill: 0.4, polite: 0.5, patience: 4, noshow: 0.05, kind: 'cold', open: 'Цена?' },
     { id: 'today', name: 'Только сегодня', w: 3, budget: [0.8, 0.9], haggle: 0.5, knows: 0.6, skill: 0.4, polite: 0.5, patience: 3, noshow: 0.07, kind: 'cold', open: 'Беру сегодня, если скинете. Время до вечера.' },
     { id: 'suspicious', name: 'Подозрительный', w: 4, budget: [0.85, 0.95], haggle: 0.35, knows: 0.6, skill: 0.55, polite: 0.7, patience: 7, noshow: 0.09, kind: 'normal', open: 'Здравствуйте. А чек и коробка есть? Телефон не ворованный?' },
@@ -3512,12 +4039,24 @@ input, textarea, [contenteditable="true"] {
     'Добрый день, продаёте ещё?',
     'Привет! Аппарат ещё в наличии?',
     'Здравствуйте. Цена окончательная?',
-    'Добрый вечер. А можно ещё фото?',
+    'Добрый вечер. А состояние нормальное?',
     'Здрасьте! Я по объявлению про телефон.',
     'Здравствуйте! А торг уместен?',
     'Добрый день. Почему продаёте?',
     'Здравствуйте! А батарея родная?',
-    'Привет. А чек остался?'
+    'Привет. А чек остался?',
+    'Добрый день! Ещё не продали?',
+    'Здравствуйте, можно посмотреть сегодня?',
+    'Привет! Что по последней цене?',
+    'Добрый вечер. Телефон рабочий?',
+    'Здравствуйте! А коробка есть?',
+    'Привет, а скидку сделаете?',
+    'Добрый день. Давно им пользуетесь?',
+    'Здравствуйте! Готов забрать сегодня.',
+    'Привет. А царапины есть?',
+    'Добрый день, а гарантия какая?',
+    'Здравствуйте, ещё актуально объявление?',
+    'Привет! Скиньте, если что, последнюю цену.'
   ];
 
   // фразы покупателей на торг
@@ -3600,17 +4139,28 @@ input, textarea, [contenteditable="true"] {
     return clamp(p, 0, 0.86);
   }
 
+  // комплект: коробка, чек и зарядка добавляют к цене
+  function kitMult(p) {
+    let k = 1;
+    if (p && p.box) k += 0.04;
+    if (p && p.docs) k += 0.06;
+    if (p && p.charger) k += 0.02;
+    if (p && p.root) k += 0.04;
+    if (p && p.brick) k *= 0.05;
+    return k;
+  }
+
   // честная цена телефона «как есть»
   function phoneValue(phone) {
     const model = MODELS_BY_ID[phone.modelId];
-    return round100(cleanMarket(model, phone.storage) * cosmeticMult(phone.cosmetic) * (1 - defectPenalty(phone.defects)));
+    return round100(cleanMarket(model, phone.storage) * cosmeticMult(phone.cosmetic) * (1 - defectPenalty(phone.defects)) * kitMult(phone));
   }
 
   // сколько за него даст покупатель, который верит только известному
   function perceivedValue(phone, knownDefects) {
     const model = MODELS_BY_ID[phone.modelId];
     const defs = knownDefects || phone.defects;
-    return round100(cleanMarket(model, phone.storage) * cosmeticMult(phone.cosmetic) * (1 - defectPenalty(defs)));
+    return round100(cleanMarket(model, phone.storage) * cosmeticMult(phone.cosmetic) * (1 - defectPenalty(defs)) * kitMult(phone));
   }
 
   // что игрок сам знает про телефон
@@ -3765,6 +4315,7 @@ input, textarea, [contenteditable="true"] {
         { key: 'frame', level: 1, disclosed: true, found: true }
       ],
       cosmetic: 0.55,
+      os: stockOS(model),
       boughtFor: 0,
       boughtAt: 0,
       isStart: true,
@@ -3773,6 +4324,130 @@ input, textarea, [contenteditable="true"] {
       main: true
     };
     return p;
+  }
+
+  /* ---------- ОС: стоковые оболочки и версии ---------- */
+  const OS_FAMILIES = {
+    ios: { name: 'iOS', list: [
+      { v: 'iOS 14', w: 2 }, { v: 'iOS 15', w: 3 }, { v: 'iOS 16', w: 4 }, { v: 'iOS 17', w: 5 },
+      { v: 'iOS 18', w: 6 }, { v: 'iOS 26', w: 7 }, { v: 'iOS 27', w: 8 }, { v: 'iOS 28', w: 9 }
+    ] },
+    mi: { name: 'Xiaomi', list: [
+      { v: 'MIUI 11', w: 2, a: 10 }, { v: 'MIUI 12', w: 3, a: 11 }, { v: 'MIUI 13', w: 4, a: 12 },
+      { v: 'MIUI 14', w: 5, a: 13 }, { v: 'HyperOS 1', w: 6, a: 14 }, { v: 'HyperOS 2', w: 7, a: 15 },
+      { v: 'HyperOS 3', w: 8, a: 16 }, { v: 'HyperOS 4', w: 9, a: 17 }
+    ] },
+    samsung: { name: 'Samsung', list: [
+      { v: 'One UI 3', w: 2, a: 11 }, { v: 'One UI 4', w: 3, a: 12 }, { v: 'One UI 5', w: 4, a: 13 },
+      { v: 'One UI 6', w: 5, a: 14 }, { v: 'One UI 7', w: 6, a: 15 }, { v: 'One UI 8', w: 7, a: 16 }
+    ] },
+    oppo: { name: 'OPPO', list: [
+      { v: 'ColorOS 11', w: 2, a: 10 }, { v: 'ColorOS 12', w: 3, a: 11 }, { v: 'ColorOS 13', w: 4, a: 12 },
+      { v: 'ColorOS 14', w: 5, a: 13 }, { v: 'ColorOS 15', w: 6, a: 14 }, { v: 'ColorOS 16', w: 7, a: 15 }
+    ] },
+    oneplus: { name: 'OnePlus', list: [
+      { v: 'OxygenOS 11', w: 2, a: 10 }, { v: 'OxygenOS 12', w: 3, a: 11 }, { v: 'OxygenOS 13', w: 4, a: 12 },
+      { v: 'OxygenOS 14', w: 5, a: 13 }, { v: 'OxygenOS 15', w: 6, a: 14 }, { v: 'OxygenOS 16', w: 7, a: 15 }
+    ] },
+    realme: { name: 'Realme', list: [
+      { v: 'realme UI 3', w: 2, a: 11 }, { v: 'realme UI 4', w: 3, a: 12 }, { v: 'realme UI 5', w: 4, a: 13 },
+      { v: 'realme UI 6', w: 5, a: 14 }, { v: 'realme UI 7', w: 6, a: 15 }
+    ] },
+    vivo: { name: 'vivo', list: [
+      { v: 'OriginOS 3', w: 3, a: 12 }, { v: 'OriginOS 4', w: 4, a: 13 }, { v: 'OriginOS 5', w: 5, a: 14 },
+      { v: 'OriginOS 6', w: 6, a: 15 }, { v: 'OriginOS 7', w: 7, a: 16 }
+    ] },
+    huawei: { name: 'Huawei', list: [
+      { v: 'EMUI 11', w: 2, a: 10 }, { v: 'EMUI 12', w: 3, a: 11 }, { v: 'HarmonyOS 2', w: 4, a: 11 },
+      { v: 'HarmonyOS 3', w: 5, a: 12 }, { v: 'HarmonyOS 4', w: 6, a: 13 }, { v: 'HarmonyOS NEXT', w: 8, a: 14 }
+    ] },
+    honor: { name: 'Honor', list: [
+      { v: 'MagicOS 5', w: 2, a: 11 }, { v: 'MagicOS 6', w: 3, a: 12 }, { v: 'MagicOS 7', w: 4, a: 13 },
+      { v: 'MagicOS 8', w: 5, a: 14 }, { v: 'MagicOS 9', w: 6, a: 15 }
+    ] },
+    google: { name: 'Google', list: [
+      { v: 'Android 11', w: 2, a: 11 }, { v: 'Android 12', w: 3, a: 12 }, { v: 'Android 13', w: 4, a: 13 },
+      { v: 'Android 14', w: 5, a: 14 }, { v: 'Android 15', w: 6, a: 15 }, { v: 'Android 16', w: 7, a: 16 }
+    ] },
+    nothing: { name: 'Nothing', list: [
+      { v: 'Nothing OS 1', w: 3, a: 12 }, { v: 'Nothing OS 2', w: 4, a: 13 }, { v: 'Nothing OS 3', w: 5, a: 14 },
+      { v: 'Nothing OS 4', w: 6, a: 15 }
+    ] },
+    sony: { name: 'Sony', list: [
+      { v: 'Xperia UI 12', w: 2, a: 11 }, { v: 'Xperia UI 13', w: 3, a: 12 }, { v: 'Xperia UI 14', w: 4, a: 13 },
+      { v: 'Xperia UI 15', w: 5, a: 14 }
+    ] },
+    asus: { name: 'ASUS', list: [
+      { v: 'ZenUI 8', w: 2, a: 11 }, { v: 'ZenUI 9', w: 3, a: 12 }, { v: 'ZenUI 10', w: 4, a: 13 }
+    ] },
+    ips: { name: 'iOS', list: [
+      { v: 'iOS 14', w: 3, custom: true }, { v: 'iOS 15', w: 4, custom: true },
+      { v: 'iOS 16', w: 5, custom: true }, { v: 'iOS 17', w: 6, custom: true },
+      { v: 'iOS 18', w: 7, custom: true }, { v: 'iOS 26', w: 8, custom: true },
+      { v: 'iOS 27', w: 9, custom: true }, { v: 'iOS 28', w: 10, custom: true }
+    ] }
+  };
+
+  const BRAND_OS = {
+    Apple: 'ios', Xiaomi: 'mi', POCO: 'mi', Samsung: 'samsung', OPPO: 'oppo', OnePlus: 'oneplus',
+    Realme: 'realme', Huawei: 'huawei', Honor: 'honor', Google: 'google', Nothing: 'nothing',
+    Sony: 'sony', ASUS: 'asus'
+  };
+
+  // плоский список всех ОС — для установки
+  const OS_ALL = (function () {
+    const out = [];
+    for (const key in OS_FAMILIES) {
+      for (const it of OS_FAMILIES[key].list) {
+        out.push({ id: key + '_' + it.v.replace(/[^a-z0-9]/gi, ''), name: it.v, w: it.w, a: it.a, family: key, custom: !!it.custom });
+      }
+    }
+    return out;
+  })();
+
+  function osLabel(os) {
+    if (!os) return '';
+    return os.name + (os.a ? ' (Android ' + os.a + ')' : '');
+  }
+
+  // с какой iOS iPhone выходил и до чего мог обновиться
+  const IPHONE_OS = {
+    ip8: 'iOS 16', ipse2020: 'iOS 18', ipxr: 'iOS 18', ip11: 'iOS 18', ip12: 'iOS 18',
+    ip13: 'iOS 18', ip14: 'iOS 26', ip15: 'iOS 26', ip16: 'iOS 26', ip16e: 'iOS 26',
+    ip16plus: 'iOS 26', ip16pro: 'iOS 26', ip16pm: 'iOS 26',
+    ip17: 'iOS 27', ip17pm: 'iOS 27', ip18: 'iOS 27', ipfold: 'iOS 28'
+  };
+
+  function stockOS(model) {
+    const famKey = BRAND_OS[model.brand] || 'google';
+    const fam = OS_FAMILIES[famKey];
+    if (!fam) return null;
+    const list = fam.list;
+    let idx;
+    if (famKey === 'ios') {
+      // новее телефона прошивки быть не может, а обновиться он мог
+      idx = list.findIndex(it => it.v === IPHONE_OS[model.id]);
+      if (idx < 0) idx = list.length - 1;
+      if (chance(0.35)) idx = Math.min(list.length - 1, idx + 1);
+    } else {
+      const t = Math.max(1, Math.min(4, model.tier || 2));
+      idx = Math.min(list.length - 1, 1 + (t - 1) * 2);
+      // телефон могли не обновлять
+      if (chance(0.35)) idx = Math.max(0, idx - 1 - rndInt(0, 1));
+      // или обновили до самой свежей
+      if (chance(0.15)) idx = Math.min(list.length - 1, idx + 1);
+    }
+    const it = list[idx];
+    return { id: famKey + '_' + it.v.replace(/[^a-z0-9]/gi, ''), name: it.v, w: it.w, a: it.a, family: famKey };
+  }
+
+  function osCompat(model, os) {
+    if (!os) return 'good';
+    if (os.custom) return 'ips';
+    const power = (model.tier || 2) * 2 + (model.base > 50000 ? 2 : model.base > 25000 ? 1 : 0);
+    if (os.w <= power) return 'good';
+    if (os.w <= power + 2) return 'mid';
+    return 'bad';
   }
 
   function generateListing(state, avoid) {
@@ -3802,6 +4477,7 @@ input, textarea, [contenteditable="true"] {
       storage: storage,
       color: pick(D.COLORS),
       cosmetic: cosmetic,
+      os: stockOS(model),
       defects: defects,
       city: city,
       isMoscow: isMoscow,
@@ -3883,7 +4559,7 @@ input, textarea, [contenteditable="true"] {
       // «якорь» — цена, которую продавец называет вслух. Он всегда выше
       // настоящего пола, а соглашается чуть ниже якоря. Так игрок никогда
       // не узнаёт точный минимум и не ловит противоречий в диалоге.
-      const anchor = neg.anchor || round100(listing.sellerMin * 1.03);
+      const anchor = Math.min(listing.ask, neg.anchor || round100(listing.sellerMin * 1.03));
       const iq = clamp((listing.seller.knows == null ? 50 : listing.seller.knows) / 100, 0, 1);
       // чем глупее продавец, тем легче его сбить: он отдаёт почти сразу
       const acceptAt = 0.82 + iq * 0.13;
@@ -4032,6 +4708,11 @@ input, textarea, [contenteditable="true"] {
       }
     }
     for (const k of found) if (!mt.found.includes(k)) mt.found.push(k);
+    // проверка проведена: всё, что относится к этой проверке, больше не «не проверено»
+    for (const d of listing.defects) {
+      const def = D.DEFECTS[d.key];
+      if (def && def.check === checkId) d.checked = true;
+    }
     if (found.length) {
       adjustSellerPrice(listing);
     }
@@ -4041,7 +4722,7 @@ input, textarea, [contenteditable="true"] {
   // игрок давит на цену на встрече
   function meetingHaggle(state, listing, price) {
     const neg = listing.neg;
-    const anchor = neg.anchor || round100(listing.sellerMin * 1.03);
+    const anchor = Math.min(listing.ask, neg.anchor || round100(listing.sellerMin * 1.03));
     const floor = listing.sellerFloor;
     const p = Math.round(price);
     const iq = clamp((listing.seller.knows == null ? 50 : listing.seller.knows) / 100, 0, 1);
@@ -4103,13 +4784,23 @@ input, textarea, [contenteditable="true"] {
       color: listing.color,
       cosmetic: listing.cosmetic,
       tier: model.tier,
-      defects: listing.defects.map(d => ({ key: d.key, found: !!d.found, disclosed: !!d.disclosed })),
+      os: listing.os || stockOS(model),
+      defects: listing.defects.map(d => ({ key: d.key, found: !!d.found, disclosed: !!d.disclosed, checked: !!d.checked })),
       boughtFor: price,
       boughtDay: state.day,
       repaired: [],
       listed: false,
       sold: false
     };
+    const tr = model.tier || 2;
+    phone.box = chance(Math.min(0.75, 0.28 + tr * 0.08));
+    phone.docs = chance(Math.min(0.70, 0.22 + tr * 0.07));
+    phone.charger = chance(Math.min(0.8, 0.35 + tr * 0.06));
+    // что видно глазами — сразу известно
+    for (const d of phone.defects) {
+      const def = D.DEFECTS[d.key];
+      if (def && def.visible) d.found = true;
+    }
     state.phones.push(phone);
     state.stats.bought++;
     state.stats.spent += price;
@@ -4220,13 +4911,15 @@ input, textarea, [contenteditable="true"] {
       city: 'Москва',
       isMoscow: true,
       ask: phone.listPrice,
+      os: phone.os || stockOS(model),
       ceiling: ceiling,
       crazy: phone.listPrice > ceiling,
       createdAt: state.day,
       views: rndInt(12, 60),
       buyers: [],
       status: 'active',
-      desc: model.name + ' ' + phone.storage + ' ГБ, ' + phone.color + '. ' + model.note + '.'
+      desc: model.name + ' ' + phone.storage + ' ГБ, ' + phone.color + '. ' + model.note + '.' +
+        (phone.box ? ' Коробка есть.' : '') + (phone.docs ? ' Чек есть.' : '') + (phone.charger ? ' Зарядка есть.' : '')
     };
     state.myListings.push(listing);
     return { ok: true, listing: listing };
@@ -4364,7 +5057,7 @@ input, textarea, [contenteditable="true"] {
       const phone = state.phones.find(p => p.id === listing.phoneId);
       const hidden = phone.defects.filter(d => !d.disclosed && !d.found);
       if (hidden.length) {
-        const d = hidden[0];
+        const d = (action.key && hidden.find(x => x.key === action.key)) || hidden[0];
         d.disclosed = true;
         listing.defects.push({ key: d.key, disclosed: true });
         const drop = round100(D.DEFECTS[d.key].priceMult * cleanMarket(MODELS_BY_ID[phone.modelId], phone.storage) * 0.9);
@@ -4380,7 +5073,7 @@ input, textarea, [contenteditable="true"] {
     if (action.type === 'talk') {
       if (chance(0.4)) buyer.patience -= 1;
       if (buyer.patience <= 0) { buyer.stage = 'lost'; out.intents.push({ kind: 'leave' }); return out; }
-      out.intents.push({ kind: 'talk' });
+      out.intents.push({ kind: action.answer ? 'answered' : 'talk' });
       return out;
     }
 
@@ -4406,7 +5099,9 @@ input, textarea, [contenteditable="true"] {
     const hidden = phone.defects.filter(d => !d.disclosed);
     const found = [];
     for (const d of hidden) {
-      const p = buyer.skill * (D.DEFECTS[d.key].visible ? 1.4 : 1.0);
+      let p = buyer.skill * (D.DEFECTS[d.key].visible ? 1.4 : 1.0);
+      // если продавец соврал — покупатель смотрит внимательнее
+      if (phone.lied) p += 0.18;
       if (chance(clamp(p, 0, 0.95))) {
         d.found = true;   // увидел, но в объявлении дефекта не было
         found.push(d.key);
@@ -4734,6 +5429,7 @@ input, textarea, [contenteditable="true"] {
     repairOptions, repairPhone, scrapPhone, suggestPrice, saneCeiling, fairMarket, listPhone, buyerAppears,
     negotiateSell, buyerInspects, completeSale, advanceDay, pushLog, newGame,
     MODES, modeOf, effect, rollEvent, EVENTS,
+    OS_ALL, OS_FAMILIES, BRAND_OS, osLabel, stockOS, osCompat,
     addDeal, mainPhone, setMainPhone, repValue
   };
   if (typeof module !== 'undefined' && module.exports) module.exports = root.Engine;
@@ -4799,8 +5495,20 @@ window.DESK_PHOTO = [];
     AI.lastError = '';
   };
 
+  // ручной переключатель «полный режим»: ключ есть, но можно играть офлайн
+  const AI_MODE_KEY = 'mide.aimode';
+  let aiOff = false;
+  try { aiOff = localStorage.getItem(AI_MODE_KEY) === 'off'; } catch (e) { }
+
+  AI.setEnabled = function (on) {
+    aiOff = !on;
+    try { localStorage.setItem(AI_MODE_KEY, on ? 'on' : 'off'); } catch (e) { }
+  };
+
+  AI.isEnabled = function () { return !aiOff; };
+
   AI.available = function () {
-    return !!AI.key;
+    return !!AI.key && !aiOff;
   };
 
   function shortError(e) {
@@ -4815,7 +5523,7 @@ window.DESK_PHOTO = [];
 
   AI.chat = async function (messages, opts) {
     opts = opts || {};
-    if (!AI.available()) return { ok: false, error: 'no_key' };
+    if (!AI.available() && !opts.force) return { ok: false, error: 'no_key' };
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), opts.timeout || 12000);
     AI.stats.calls++;
@@ -4915,13 +5623,20 @@ window.DESK_PHOTO = [];
         : 'Игрок — ПОКУПАТЕЛЬ. offer — он предлагает свою цену. accept — соглашается на цену продавца. meet — предлагает встречу. ask — спрашивает про дефекты, батарею или документы. talk — просто отвечает.',
       'leave — отказ, «не буду», «не интересно», «передумал».',
       'Согласие в любой форме — «ладно», «ок», «по рукам», «беру», «договорились», «давай» — это accept.',
+      'accept ставь только если игрок соглашается на конкретную цену, о которой только что шла речь.',
+      'Если игрок просто отвечает на вопрос («да» на «телефон актуален?», «есть», «конечно»), это talk, а не accept.',
       'Любое число, цифрами или словами, — это price в рублях.',
       'Если цены в сообщении нет, price строго null. НИКОГДА не придумывай число.',
       'Если сообщение непонятное или это просто болтовня — act: "talk".'
     ].join('\n');
+    const hist = (ctx.chat || []).slice(-6).map(m => {
+      const who = m.who === 'me' ? 'Игрок' : m.who === 'them' ? 'Собеседник' : '';
+      return who ? who + ': ' + String(m.text || '').slice(0, 140) : '';
+    }).filter(Boolean).join('\n');
     const info = [
       'Цена в объявлении: ' + (ctx.listing && ctx.listing.ask) + ' ₽',
       isSell && ctx.buyer ? ('Покупатель предлагал: ' + ctx.buyer.offer + ' ₽') : '',
+      hist ? 'Последние сообщения:\n' + hist : '',
       'Сообщение игрока: «' + text + '»'
     ].filter(Boolean).join('\n');
     const r = await AI.chat(
@@ -4964,12 +5679,18 @@ window.DESK_PHOTO = [];
     const m = root.Engine.MODELS_BY_ID[l.modelId];
     const defects = l.defects.filter(d => d.disclosed)
       .map(d => D.DEFECTS[d.key].name.toLowerCase()).join(', ') || 'явных проблем нет';
+    const allDefects = (l.defects || [])
+      .map(d => D.DEFECTS[d.key] ? D.DEFECTS[d.key].name.toLowerCase() : '')
+      .filter(Boolean).join(', ') || 'нет';
     const agreed = l.neg && l.neg.agreedPrice;
     return [
       'Ты — ' + l.seller.name + ', продаёшь телефон на Авито в ' + l.city + '.',
       'Твой типаж: ' + l.seller.typeName + '.',
       'Телефон: ' + m.name + ' ' + l.storage + ' ГБ, ' + l.color + ', состояние ' + (l.cosmetic > 0.8 ? 'хорошее' : l.cosmetic > 0.6 ? 'среднее' : 'потрёпанное') + '.',
       'Что уже известно покупателю: ' + defects + '.',
+      'Все дефекты аппарата (знаешь ты): ' + allDefects + '.',
+      'Скрытые дефекты не называй, пока задание ниже не требует их раскрыть.',
+      'Не проси фотографии и не предлагай их прислать — в этом чате их не отправить.',
       agreed ? 'Вы уже договорились на ' + agreed + ' ₽. Но покупатель может передумать и назвать другую цену — тогда действуй по заданию ниже, а не по этой сумме.' : 'Ты просишь ' + l.ask + ' ₽.',
       'У тебя есть внутренний предел, ниже которого ты не пойдёшь, но ты НИКОГДА его не называешь и не намекаешь, сколько ещё готов уступить.',
       'Называй только ту сумму, которая указана в задании ниже. Других чисел не произноси.',
@@ -4988,10 +5709,18 @@ window.DESK_PHOTO = [];
     const persona = D.BUYERS.find(x => x.id === b.personaId) || { open: '' };
     const agreed = b.agreedPrice;
     const crazy = l.ask > b.offer * CRAZY_MULT;
+    const srcDefs = (ctx.phone && ctx.phone.defects) ? ctx.phone.defects : (l.defects || []);
+    const allDefects = srcDefs
+      .map(d => D.DEFECTS[d.key] ? D.DEFECTS[d.key].name.toLowerCase() : '')
+      .filter(Boolean).join(', ') || 'нет';
+    const kit = ctx.phone ? [ctx.phone.box ? 'коробка' : '', ctx.phone.docs ? 'чек' : '', ctx.phone.charger ? 'зарядка' : ''].filter(Boolean).join(', ') : '';
     return [
       'Ты — ' + b.personaName + ' на Авито. Ты хочешь купить ' + m.name + ' ' + l.storage + ' ГБ.',
       'Твой характер: ' + b.kind + '. Ты ' + (b.polite > 0.7 ? 'вежливый' : b.polite > 0.4 ? 'нейтральный' : 'резкий и грубоватый') + '.',
       agreed ? 'Вы уже договорились на ' + agreed + ' ₽. Но если в задании ниже названа другая цена — следуй заданию.' : 'Продавец просит ' + l.ask + ' ₽. Сейчас ты предлагаешь ' + b.offer + ' ₽.',
+      'Все дефекты аппарата (для сведения): ' + allDefects + '. Скрытые не перечисляй — ты можешь узнать о них только при осмотре.',
+      'Комплект: ' + (kit || 'без коробки и чека') + '.',
+      'Не проси фотографии и не предлагай их прислать — в этом чате их не отправить.',
       agreed ? '' : 'Ты ещё НЕ согласился. Не пиши «по рукам», «договорились», «беру», «забираю» и не назначай встречу — ты продолжаешь торговаться.',
       crazy ? 'Цена продавца абсурдно высокая — в разы выше рынка. Это неадекватно: скажи об этом прямо (можно усомниться, в своём ли он уме) и назови ровно ' + b.offer + ' ₽ как нормальную цену. На его цену не соглашайся ни при каких условиях.' : '',
       'Твой максимум — секрет: ты можешь сказать, что дорого, но не называй точную сумму, которую готов заплатить.',
@@ -5035,6 +5764,7 @@ window.DESK_PHOTO = [];
       case 'leave': return 'Ты уходишь из чата. Скажи это коротко.';
       case 'not_buying': return 'Ты сомневаешься и не готов брать. Ответь уклончиво.';
       case 'nothing_to_disclose': return 'Продавец предлагает рассказать о дефектах, а тебе и так всё нормально. Ответь.';
+      case 'answered': return 'Продавец ответил на твой вопрос. Поблагодари коротко или задай следующий вопрос о телефоне. Цену не называй.';
       case 'talk': return 'Ответь на последнее сообщение продавца в своём характере. Если он спросит цену — можешь назвать только ' + (b.agreedPrice || b.offer) + ' ₽, других чисел не произноси.';
       default: return 'Ответь коротко и по делу.';
     }
@@ -5050,79 +5780,343 @@ window.DESK_PHOTO = [];
   /* ---------- оффлайн-шаблоны ---------- */
   const TONE = {
     neutral: {
-      accept: ['Ок, по рукам. {price} ₽, встречаемся.', 'Договорились, {price} ₽. Когда удобно?', 'Ладно, согласен. {price} ₽ и всё.'],
-      counter: ['Нет, за столько не отдам. {price} ₽ — и это минимум.', 'Не пойдёт. Я рассчитывал на {price} ₽.', '{price} ₽, иначе не интересно.'],
-      reject: ['Не, это слишком мало. {price} ₽.', 'За такие деньги не продам. Ближе к {price} ₽.', 'Ну нет, за это я не отдам. {price} ₽.'],
-      defect: ['Да, есть такое. Тогда {price} ₽.', 'Не скрываю: {price} ₽ с учётом этого.']
+      accept: [
+        'Ок, по рукам. {price} ₽, встречаемся.',
+        'Договорились, {price} ₽. Когда удобно?',
+        'Ладно, согласен. {price} ₽ и всё.',
+        'Хорошо, {price} ₽. Скину адрес, подъезжайте.',
+        'Беру вашу цену. {price} ₽, до встречи.'
+      ],
+      counter: [
+        'Нет, за столько не отдам. {price} ₽ — и это минимум.',
+        'Не пойдёт. Я рассчитывал на {price} ₽.',
+        '{price} ₽, иначе не интересно.',
+        'Ближе к {price} ₽, и тогда поговорим.',
+        'За {price} ₽ отдам, ниже уже невыгодно.'
+      ],
+      reject: [
+        'Не, это слишком мало. {price} ₽.',
+        'За такие деньги не продам. Ближе к {price} ₽.',
+        'Ну нет, за это я не отдам. {price} ₽.',
+        'Слишком низко. Моя цена — {price} ₽.',
+        'Так не пойдёт. {price} ₽, и не ниже.'
+      ],
+      defect: [
+        'Да, есть такое. Тогда {price} ₽.',
+        'Не скрываю: {price} ₽ с учётом этого.',
+        'Да, дефект есть, поэтому {price} ₽.',
+        'Верно, это учтено. {price} ₽.',
+        'Согласен, не идеал. Скину до {price} ₽.'
+      ]
     },
     anxious: {
-      accept: ['Хорошо, забирайте за {price} ₽, мне срочно нужно.', 'Ладно, {price} ₽, только сегодня.', 'Согласен. {price} ₽, я спешу.'],
-      counter: ['Мне бы {price} ₽, правда нужно срочно.', 'Меньше {price} ₽ не смогу, деньги нужны.', '{price} ₽, пожалуйста, я тороплюсь.'],
-      reject: ['Нет, так не пойдёт. Мне нужно хотя бы {price} ₽.', 'Слишком мало, у меня {price} ₽ в объявлении.']
+      accept: [
+        'Хорошо, забирайте за {price} ₽, мне срочно нужно.',
+        'Ладно, {price} ₽, только сегодня.',
+        'Согласен. {price} ₽, я спешу.',
+        'Давайте {price} ₽, и я собираюсь.',
+        'Хорошо, {price} ₽. Только быстро, пожалуйста.'
+      ],
+      counter: [
+        'Мне бы {price} ₽, правда нужно срочно.',
+        'Меньше {price} ₽ не смогу, деньги нужны.',
+        '{price} ₽, пожалуйста, я тороплюсь.',
+        'Очень прошу, {price} ₽. У меня сроки.',
+        'Хотя бы {price} ₽, иначе не выходит.'
+      ],
+      reject: [
+        'Нет, так не пойдёт. Мне нужно хотя бы {price} ₽.',
+        'Слишком мало, у меня {price} ₽ в объявлении.',
+        'Не могу так дешево, извините. {price} ₽.',
+        'Мне очень нужны деньги, но {price} ₽ — минимум.',
+        'Простите, {price} ₽ и ни рубля меньше.'
+      ],
+      defect: [
+        'Да, есть. Поэтому {price} ₽.',
+        'Не скрываю, с этим {price} ₽.',
+        'Верно, дефект есть. Отдам за {price} ₽.',
+        'Да, из-за этого и цена {price} ₽.',
+        'Согласен, не новый. {price} ₽, и расходимся.'
+      ]
     },
     rude: {
-      accept: ['Ну ладно, забирай за {price} ₽.', 'Хрен с тобой, {price} ₽.', 'Договорились, {price} ₽.'],
-      counter: ['Чё ты мне тут? {price} ₽ и точка.', 'Не смеши. {price} ₽.', 'Я сказал {price} ₽.'],
-      reject: ['Ты чё, совсем? {price} ₽.', 'За копейки хочешь? {price} ₽.', 'Иди на рынок, там дешевле. {price} ₽.']
+      accept: [
+        'Ну ладно, забирай за {price} ₽.',
+        'Хрен с тобой, {price} ₽.',
+        'Договорились, {price} ₽.',
+        'Ладно, {price} ₽. Только не тяни.',
+        'По рукам. {price} ₽ и всё.'
+      ],
+      counter: [
+        'Чё ты мне тут? {price} ₽ и точка.',
+        'Не смеши. {price} ₽.',
+        'Я сказал {price} ₽.',
+        'За {price} ₽ отдам, хочешь — бери, нет — иди.',
+        'Хватит торговаться. {price} ₽.'
+      ],
+      reject: [
+        'Ты чё, совсем? {price} ₽.',
+        'За копейки хочешь? {price} ₽.',
+        'Иди на рынок, там дешевле. {price} ₽.',
+        'Не позорься. {price} ₽.',
+        'Такие деньги только за хлам. {price} ₽.'
+      ],
+      defect: [
+        'Ну есть, и чё? {price} ₽.',
+        'Да, есть. {price} ₽, и не ной.',
+        'Сказал же, дефект есть. {price} ₽.',
+        'Есть такое, поэтому {price} ₽.',
+        'Ну и что? {price} ₽.'
+      ]
     },
     cold: {
-      accept: ['Хорошо. {price} ₽.', 'Договорились. {price} ₽.'],
-      counter: ['Нет. {price} ₽.', 'Цена {price} ₽.', '{price} ₽.'],
-      reject: ['Нет. {price} ₽.', 'Не подходит. {price} ₽.']
+      accept: ['Хорошо. {price} ₽.', 'Договорились. {price} ₽.', 'Беру. {price} ₽.', 'Ок. {price} ₽.', 'Принято. {price} ₽.'],
+      counter: ['Нет. {price} ₽.', 'Цена {price} ₽.', '{price} ₽.', 'Не ниже {price} ₽.', 'Только {price} ₽.'],
+      reject: ['Нет. {price} ₽.', 'Не подходит. {price} ₽.', '{price} ₽.', 'Мало. {price} ₽.', 'Нет, {price} ₽.'],
+      defect: ['Да. {price} ₽.', 'Есть. {price} ₽.', 'Учтено. {price} ₽.', 'Да, поэтому {price} ₽.', 'Есть дефект. {price} ₽.']
     },
     pro: {
-      accept: ['Ок, {price} ₽, забираю.', 'По рукам, {price} ₽.', 'Договорились. {price} ₽, наличные?'],
-      counter: ['Мне нужно {price} ₽, это уже с учётом рынка.', 'По рынку {price} ₽, ниже некуда.', '{price} ₽ — честная цена.'],
-      reject: ['Не, {price} ₽, и я знаю, сколько это стоит.', 'Слишком низко. {price} ₽.']
+      accept: [
+        'Ок, {price} ₽, забираю.',
+        'По рукам, {price} ₽.',
+        'Договорились. {price} ₽, наличные?',
+        'Беру за {price} ₽. Проверю на месте.',
+        'Хорошо, {price} ₽. Где встречаемся?'
+      ],
+      counter: [
+        'Мне нужно {price} ₽, это уже с учётом рынка.',
+        'По рынку {price} ₽, ниже некуда.',
+        '{price} ₽ — честная цена за такое состояние.',
+        'Ниже {price} ₽ смысла нет.',
+        'Рынок я знаю: {price} ₽, и всё.'
+      ],
+      reject: [
+        'Не, {price} ₽, и я знаю, сколько это стоит.',
+        'Слишком низко. {price} ₽.',
+        'За такие деньги только битьё берут. {price} ₽.',
+        'Несерьёзно. {price} ₽.',
+        'Мой минимум {price} ₽.'
+      ],
+      defect: [
+        'Да, учёл. {price} ₽.',
+        'Вижу, поэтому {price} ₽.',
+        'Дефект есть, цена {price} ₽.',
+        'Согласен, с этим {price} ₽.',
+        'Всё честно: {price} ₽ с дефектом.'
+      ]
     },
     kind: {
-      accept: ['Конечно, забирайте за {price} ₽. Спасибо!', 'Хорошо, {price} ₽. Пусть телефон радует.', 'Да, {price} ₽ — и он ваш.'],
-      counter: ['Понимаю вас, но {price} ₽ — это уже уступка.', 'Хотелось бы {price} ₽, честно.', '{price} ₽, и я ещё чехол отдам.']
+      accept: [
+        'Конечно, забирайте за {price} ₽. Спасибо!',
+        'Хорошо, {price} ₽. Пусть телефон радует.',
+        'Да, {price} ₽ — и он ваш.',
+        'С удовольствием отдам за {price} ₽.',
+        'Договорились, {price} ₽. Спасибо, что написали.'
+      ],
+      counter: [
+        'Понимаю вас, но {price} ₽ — это уже уступка.',
+        'Хотелось бы {price} ₽, честно.',
+        '{price} ₽, и я ещё чехол отдам.',
+        'Извините, ниже {price} ₽ не смогу.',
+        'Давайте {price} ₽, и я всё покажу при встрече.'
+      ],
+      reject: [
+        'Извините, за {price} ₽ не смогу.',
+        'Мне очень неловко, но {price} ₽ — минимум.',
+        'Понимаю, что дорого, но ниже {price} ₽ никак.',
+        'Простите, {price} ₽ и то в убыток.',
+        'Не хочу обидеть, но {price} ₽.'
+      ],
+      defect: [
+        'Да, к сожалению, есть. Поэтому {price} ₽.',
+        'Вы правы, дефект есть. Отдам за {price} ₽.',
+        'Да, и я не скрываю. {price} ₽.',
+        'Спасибо, что заметили. {price} ₽.',
+        'Верно, поэтому цена {price} ₽.'
+      ]
     }
   };
 
   const BUY_TPL = {
     normal: {
-      accept: ['Беру! {price} ₽, договорились.', 'Хорошо, {price} ₽ меня устраивает. Когда можно посмотреть?'],
-      counter: ['Мне бы подешевле. {price} ₽?', 'За {price} ₽ возьму.', 'Давайте хоть до {price} ₽ скинемся.'],
-      reject_price: ['Дороговато для меня. Я по {price} ₽ готов.', 'За такую цену не возьму, вот {price} ₽.'],
-      too_expensive: ['Это выше моего бюджета, извините.', 'Дорого для меня, столько нет.'],
-      open: ['Здравствуйте! Телефон ещё актуален?']
+      accept: [
+        'Беру! {price} ₽, договорились.',
+        'Хорошо, {price} ₽ меня устраивает. Когда можно посмотреть?',
+        'Согласен на {price} ₽. Куда подъехать?',
+        'Ок, {price} ₽. Давайте сегодня.',
+        'Договорились, {price} ₽. Скиньте адрес.'
+      ],
+      counter: [
+        'Мне бы подешевле. {price} ₽?',
+        'За {price} ₽ возьму.',
+        'Давайте хоть до {price} ₽ скинемся.',
+        'А {price} ₽ не рассмотрите?',
+        'Готов взять за {price} ₽ прямо сейчас.'
+      ],
+      reject_price: [
+        'Дороговато для меня. Я по {price} ₽ готов.',
+        'За такую цену не возьму, вот {price} ₽.',
+        'Не, {price} ₽ — и я в деле.',
+        'Максимум {price} ₽, извините.',
+        'Я рассчитывал на {price} ₽.'
+      ],
+      too_expensive: [
+        'Это выше моего бюджета, извините.',
+        'Дорого для меня, столько нет.',
+        'Не потяну, к сожалению.',
+        'Боюсь, не по карману.',
+        'Столько у меня не наберётся.'
+      ],
+      open: [
+        'Здравствуйте! Телефон ещё актуален?',
+        'Добрый день, продаёте ещё?',
+        'Привет! Аппарат ещё в наличии?',
+        'Здравствуйте. Цена окончательная?',
+        'Добрый день. Почему продаёте?'
+      ]
     },
     kid: {
-      accept: ['да ладно, беру за {price}. только денег у меня впритык', 'ок, {price}, уговорил'],
-      counter: ['а можно {price}? у меня просто больше нет', 'ну {price}, пожалуйста 🙏', 'могу {price}, больше не наскребу'],
-      reject_price: ['да ну, дорого. {price} могу'],
-      too_expensive: ['у меня столько нет, я школьник'],
-      open: ['здарова, а можно дешевле? у меня немного денег']
+      accept: [
+        'да ладно, беру за {price}. только денег у меня впритык',
+        'ок, {price}, уговорил',
+        'беру за {price}, но у меня только эти',
+        'ладно {price}, только не пропадай',
+        'хорошо, {price}. когда можно?'
+      ],
+      counter: [
+        'а можно {price}? у меня просто больше нет',
+        'ну {price}, пожалуйста 🙏',
+        'могу {price}, больше не наскребу',
+        'а за {price} отдашь?',
+        'у меня {price}, и всё'
+      ],
+      reject_price: [
+        'да ну, дорого. {price} могу',
+        'не, за {price} возьму',
+        'это много, у меня {price}',
+        'а {price}?'
+      ],
+      too_expensive: [
+        'у меня столько нет, я школьник',
+        'дорого, у меня всего {price}',
+        'не, это не по мне',
+        'мне не хватит'
+      ],
+      open: [
+        'здарова, а можно дешевле? у меня немного денег',
+        'привет, а скок последняя?',
+        'здравствуйте, а торг есть?',
+        'привет, ещё продаёшь?'
+      ]
     },
     rude: {
-      accept: ['Ладно, {price}, забираю.', 'По рукам, {price} ₽.'],
-      counter: ['За такое {price} ₽ и то много.', 'Давай {price} ₽ и расходимся.', '{price} ₽, не больше.'],
-      reject_price: ['Ты чё, за такой хлам столько? {price} ₽.'],
-      too_expensive: ['Столько у меня нет.', 'Не потяну такую цену.'],
-      open: ['Чё так дорого? За такой хлам столько просишь?']
+      accept: [
+        'Ладно, {price}, забираю.',
+        'По рукам, {price} ₽.',
+        'Ок, {price}. Только быстро.',
+        'Беру за {price}, не тяни.',
+        'Ну всё, {price} и расходимся.'
+      ],
+      counter: [
+        'За такое {price} ₽ и то много.',
+        'Давай {price} ₽ и расходимся.',
+        '{price} ₽, не больше.',
+        'Максимум {price} ₽, понял?',
+        'Скидывай до {price} ₽.'
+      ],
+      reject_price: [
+        'Ты чё, за такой хлам столько? {price} ₽.',
+        'Дорого. {price} ₽.',
+        'Не смеши, {price} ₽.',
+        'За {price} ₽ возьму, и то подумаю.'
+      ],
+      too_expensive: [
+        'Столько у меня нет.',
+        'Не потяну такую цену.',
+        'Дорого, нет.',
+        'Не по карману.'
+      ],
+      open: [
+        'Чё так дорого? За такой хлам столько просишь?',
+        'Цена?',
+        'Чё продаёшь?',
+        'Актуально?'
+      ]
     },
     pro: {
-      accept: ['Беру за {price} ₽.', 'Ок, {price} ₽, забираю.'],
-      counter: ['{price} ₽ — по рынку. Больше не дам.', 'Мой максимум {price} ₽.'],
-      reject_price: ['Цена неадекватная. {price} ₽, и я в деле.'],
-      too_expensive: ['Не вписываюсь в такую цену.'],
-      open: ['Здравствуйте. По цене сразу: сколько реально отдадите?']
+      accept: [
+        'Беру за {price} ₽.',
+        'Ок, {price} ₽, забираю.',
+        'По рукам, {price} ₽.',
+        'Согласен, {price} ₽. Проверю на месте.',
+        'Принято, {price} ₽.'
+      ],
+      counter: [
+        '{price} ₽ — по рынку. Больше не дам.',
+        'Мой максимум {price} ₽.',
+        '{price} ₽, и я забираю сегодня.',
+        'По рынку это {price} ₽.',
+        'Выше {price} ₽ не вижу смысла.'
+      ],
+      reject_price: [
+        'Цена неадекватная. {price} ₽, и я в деле.',
+        'Не, {price} ₽.',
+        'За {price} ₽ возьму.',
+        'Дорого для такого состояния. {price} ₽.'
+      ],
+      too_expensive: [
+        'Не вписываюсь в такую цену.',
+        'Выше рынка, не возьму.',
+        'Дорого.',
+        'Не по рынку, пас.'
+      ],
+      open: [
+        'Здравствуйте. По цене сразу: сколько реально отдадите?',
+        'Добрый день. Что по последней цене?',
+        'Здравствуйте. Торг возможен?',
+        'По цене сразу — сколько?'
+      ]
     },
     kind: {
-      accept: ['Спасибо, за {price} ₽ беру!', 'Хорошо, {price} ₽, договорились.'],
-      counter: ['Может, {price} ₽? Очень хочется.', 'Я бы взял за {price} ₽.'],
-      reject_price: ['Извините, для меня дорого. Я думал про {price} ₽.'],
-      too_expensive: ['Извините, для меня это дорого.'],
-      open: ['Здравствуйте! Телефон ещё продаётся?']
+      accept: [
+        'Спасибо, за {price} ₽ беру!',
+        'Хорошо, {price} ₽, договорились.',
+        'С удовольствием возьму за {price} ₽.',
+        'Спасибо, {price} ₽ меня полностью устраивает.',
+        'Беру, {price} ₽. Спасибо, что уступили.'
+      ],
+      counter: [
+        'Может, {price} ₽? Очень хочется.',
+        'Я бы взял за {price} ₽.',
+        'Извините, а {price} ₽ не получится?',
+        'Очень прошу, {price} ₽.',
+        'Если бы {price} ₽ — взял бы не думая.'
+      ],
+      reject_price: [
+        'Извините, для меня дорого. Я думал про {price} ₽.',
+        'Простите, {price} ₽ было бы идеально.',
+        'Не хочу торговаться, но {price} ₽ мне ближе.',
+        'Понимаю, но {price} ₽ для меня максимум.'
+      ],
+      too_expensive: [
+        'Извините, для меня это дорого.',
+        'К сожалению, не могу себе позволить.',
+        'Простите, не по карману.',
+        'Очень жаль, но дорого.'
+      ],
+      open: [
+        'Здравствуйте! Телефон ещё продаётся?',
+        'Добрый день! Очень заинтересовал аппарат.',
+        'Здравствуйте, а он в хорошем состоянии?',
+        'Добрый день. Подскажите, ещё актуально?'
+      ]
     },
     cold: {
-      accept: ['Беру. {price} ₽.'],
-      counter: ['{price} ₽.'],
-      reject_price: ['Дорого. {price} ₽.'],
-      too_expensive: ['Дорого.'],
-      open: ['Цена?']
+      accept: ['Беру. {price} ₽.', 'Ок. {price} ₽.', 'Договорились. {price} ₽.', 'Принято. {price} ₽.', 'Хорошо. {price} ₽.'],
+      counter: ['{price} ₽.', 'Не больше {price} ₽.', 'Только {price} ₽.', 'Максимум {price} ₽.', '{price} ₽ и всё.'],
+      reject_price: ['Дорого. {price} ₽.', 'Не, {price} ₽.', '{price} ₽.', 'Нет. {price} ₽.', 'Много. {price} ₽.'],
+      too_expensive: ['Дорого.', 'Не потяну.', 'Нет.', 'Не по карману.'],
+      open: ['Цена?', 'Актуально?', 'Сколько?', 'Что по цене?', 'Ещё продаёте?']
     }
   };
 
@@ -5142,6 +6136,242 @@ window.DESK_PHOTO = [];
     'Слишком дорого, я пас. Если передумаете — {price} ₽.',
     'Ну это уже наглость. Такой аппарат берут за {price} ₽.'
   ];
+
+  /* ---------- ответы на смысл сообщения ---------- */
+  // Без ИИ: смотрим, о чём говорил игрок, и отвечаем по теме.
+  const SELL_TOPIC = {
+    price: [
+      'Цена в объявлении, торг небольшой.',
+      'Ниже уже некуда, я и так уступил.',
+      'По цене готов обсудить при встрече.',
+      'Дешевле не отдам, извините.',
+      'Это уже с учётом состояния.',
+      'Скинул сколько мог, дальше некуда.'
+    ],
+    battery: [
+      'Батарея держит нормально, день ходит.',
+      'Аккумулятор родной, не менял.',
+      'По батарее вопросов нет, проверяйте.',
+      'Держит, но к вечеру лучше зарядить.',
+      'Батарею менял, стоит нормальная.',
+      'Здоровье нормальное, сам смотрел.'
+    ],
+    docs: [
+      'Коробка и чек есть, всё официально.',
+      'Документы на месте, чек сохранился.',
+      'Коробки нет, чек есть.',
+      'Чек есть, коробку не сохранил.',
+      'Всё есть: коробка, чек, зарядка.',
+      'Документы покажу при встрече.'
+    ],
+    condition: [
+      'Состояние нормальное, есть небольшие следы.',
+      'Всё как в описании, ничего не скрываю.',
+      'Потёртости есть, но работает отлично.',
+      'Скол небольшой, на работу не влияет.',
+      'Телефон аккуратный, всегда в чехле.',
+      'Покажу при встрече, сами увидите.'
+    ],
+    meet: [
+      'Давайте у метро, так удобнее.',
+      'Могу сегодня после шести.',
+      'Скину адрес, подъезжайте.',
+      'Я в центре, куда вам удобно?',
+      'Давайте завтра днём.',
+      'Встретимся, всё покажу и проверим.'
+    ],
+    delivery: [
+      'Могу отправить Авито Доставкой.',
+      'Доставка есть, упакую нормально.',
+      'Лично не получится, отправлю.',
+      'Через доставку — без проблем.',
+      'Упакую в коробку, доедет целым.',
+      'Давайте доставкой, так быстрее.'
+    ],
+    repair: [
+      'Телефон не вскрывался, ничего не менял.',
+      'Менял только батарею, остальное родное.',
+      'Ремонтов не было.',
+      'Экран родной, не менял.',
+      'Всё работает, чинить нечего.',
+      'Была замена стекла, делали аккуратно.'
+    ],
+    warranty: [
+      'Гарантию дать не могу, продаю как есть.',
+      'Даю две недели на проверку.',
+      'Гарантия на словах, телефон честный.',
+      'Чек есть, если что — по чеку.',
+      'Никакой гарантии, проверяйте на месте.',
+      'Могу дать неделю, если что-то не так.'
+    ],
+    think: [
+      'Хорошо, думайте, я не спешу.',
+      'Ок, если надумаете — пишите.',
+      'Подожду до вечера, потом другим предложу.',
+      'Смотрите, телефон хороший, долго не залежится.',
+      'Понимаю, решайте.',
+      'Напишите, как определитесь.'
+    ],
+    greet: [
+      'Здравствуйте! Да, ещё продаю.',
+      'Добрый день, всё в силе.',
+      'Привет, актуально.',
+      'Да, телефон ещё у меня.',
+      'Здравствуйте, слушаю.',
+      'Добрый день, что интересует?'
+    ],
+    thanks: [
+      'И вам спасибо, до встречи.',
+      'Спасибо, обращайтесь.',
+      'До связи.',
+      'Всё хорошо, спасибо.',
+      'Был рад помочь.',
+      'Удачи с покупкой.'
+    ],
+    other: [
+      'Да, всё в силе.',
+      'Понял вас.',
+      'Хорошо, договорились.',
+      'Слушаю.',
+      'Ну, как скажете.',
+      'Ладно.'
+    ]
+  };
+
+  const BUY_TOPIC = {
+    price: [
+      'Дорого для меня, если честно.',
+      'А скинуть немного сможете?',
+      'Видел такой же дешевле.',
+      'За такую цену я подумаю.',
+      'Может, договоримся?',
+      'Цена окончательная?'
+    ],
+    battery: [
+      'А батарея родная?',
+      'Сколько держит?',
+      'Аккумулятор не менялся?',
+      'По батарее всё нормально?',
+      'Износ какой?',
+      'Заряд держит день?'
+    ],
+    docs: [
+      'А чек и коробка есть?',
+      'Документы на месте?',
+      'Коробка сохранилась?',
+      'Чек покажете?',
+      'Комплект полный?',
+      'Зарядка в комплекте?'
+    ],
+    condition: [
+      'А царапины есть?',
+      'Состояние как в описании?',
+      'Сколов нет?',
+      'Телефон не битый?',
+      'Выглядит нормально?',
+      'Что по внешнему виду?'
+    ],
+    meet: [
+      'Где удобно встретиться?',
+      'Могу подъехать сегодня.',
+      'Во сколько вам удобно?',
+      'Давайте у метро.',
+      'Я рядом, могу быстро.',
+      'Когда свободны?'
+    ],
+    delivery: [
+      'А доставкой можно?',
+      'Отправите Авито Доставкой?',
+      'Я не в Москве, только доставка.',
+      'Упакуете нормально?',
+      'Сколько идёт?',
+      'Давайте через доставку.'
+    ],
+    repair: [
+      'Телефон вскрывали?',
+      'Экран меняли?',
+      'Ремонты были?',
+      'Батарею меняли?',
+      'Всё родное?',
+      'В сервис отдавали?'
+    ],
+    warranty: [
+      'А гарантия есть?',
+      'Если что-то не так — верну?',
+      'Чек дадите?',
+      'Гарантируете, что работает?',
+      'На сколько даёте гарантию?',
+      'А если сломается?'
+    ],
+    think: [
+      'Понял, я подумаю.',
+      'Спасибо, посоветуюсь.',
+      'Хорошо, напишу позже.',
+      'Ладно, решу и отпишусь.',
+      'Ок, не пропаду.',
+      'Думаю, скоро напишу.'
+    ],
+    greet: [
+      'Здравствуйте!',
+      'Добрый день!',
+      'Привет!',
+      'Здравствуйте, это по объявлению.',
+      'Добрый вечер!',
+      'Здрасьте!'
+    ],
+    thanks: [
+      'Спасибо, до встречи.',
+      'Благодарю, на связи.',
+      'Ок, спасибо.',
+      'Спасибо за ответ.',
+      'Хорошо, спасибо.',
+      'До связи.'
+    ],
+    aftergreet: [
+      'А батарея как?',
+      'А состояние нормальное?',
+      'А торг возможен?',
+      'А комплект полный?',
+      'Когда можно посмотреть?',
+      'А какие дефекты есть?'
+    ],
+    other: [
+      'Понял вас.',
+      'Хорошо.',
+      'Ладно.',
+      'Ок.',
+      'Спасибо.',
+      'Ясно.'
+    ]
+  };
+
+  function pickPhrase(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function lastPlayerText(chat) {
+    for (let i = (chat || []).length - 1; i >= 0; i--) {
+      if (chat[i].who === 'me') return chat[i].text || '';
+    }
+    return '';
+  }
+
+  function topicOf(text) {
+    const s = String(text || '').toLowerCase().replace(/ё/g, 'е');
+    if (/цен|дорог|скидк|дешев|торг|сойд|уступ|рубл/.test(s)) return 'price';
+    if (/батаре|аккум|износ|держ/.test(s)) return 'battery';
+    if (/документ|чек|коробк|комплект|зарядк/.test(s)) return 'docs';
+    if (/гаранти|верн|обмен|слома/.test(s)) return 'warranty';
+    if (/ремонт|экран|стекл|менял|вскрыва|сервис/.test(s)) return 'repair';
+    if (/встреч|метро|адрес|подъех|приезж|во сколько|когда свобод|удобно/.test(s)) return 'meet';
+    if (/доставк|отправ|почт|упаку/.test(s)) return 'delivery';
+    if (/состоян|царап|скол|трещ|дефект|коцк|вид|битый/.test(s)) return 'condition';
+    if (/подума|посовет|позже|потом|отпиш|решу/.test(s)) return 'think';
+    if (/спасиб|благодар|до связи|до встречи|пока\b/.test(s)) return 'thanks';
+    if (/актуал|интересу|спрашива/.test(s)) return 'aftergreet';
+    if (/привет|здравств|добрый|здрасьте|прода[её]тся|в наличии/.test(s)) return 'greet';
+    return 'other';
+  }
 
   function tpl(list, key, vars) {
     const arr = list[key];
@@ -5165,16 +6395,37 @@ window.DESK_PHOTO = [];
       case 'accept': return tpl(tone, 'accept', vars);
       case 'counter': return tpl(tone, 'counter', vars);
       case 'reject': return tpl(tone, 'reject', vars);
-      case 'defect': return tpl(tone, 'defect', vars) + ' ' + defName(intent.defect) + '.';
-      case 'info':
-        if (intent.subject === 'battery') return 'Батарея держит нормально, день точно ходит.';
-        if (intent.subject === 'documents') return 'Коробка и чек есть, всё официально.';
-        return 'Да всё нормально, проверяйте при встрече.';
-      case 'meet': return 'Да, давайте у метро ' + l.metro + '. Могу сегодня после шести.';
-      case 'leave': return ['Ну ладно, как хотите.', 'Не интересно — до свидания.', 'Ок, если передумаете — пишите.'][Math.floor(Math.random() * 3)];
-      case 'shipping_only': return 'Я не в Москве, могу только Авито Доставкой отправить.';
-      case 'talk': return 'Да, слушаю.';
-      default: return 'Да, всё в силе.';
+      case 'defect': return tpl(tone, 'defect', vars);
+      case 'info': {
+        const t = intent.subject === 'battery' ? 'battery' : intent.subject === 'documents' ? 'docs' : 'condition';
+        return pickPhrase(SELL_TOPIC[t]);
+      }
+      case 'meet': return pickPhrase([
+        'Да, давайте у метро ' + l.metro + '. Могу сегодня после шести.',
+        'Хорошо, подъезжайте к ' + l.metro + '. Покажу всё на месте.',
+        'Договорились. Я у ' + l.metro + ', когда вам удобно?',
+        'Ок, встречаемся у ' + l.metro + '. Скину точку.',
+        'Да, давайте. Я рядом с ' + l.metro + '.',
+        'Добро, жду у ' + l.metro + '.'
+      ]);
+      case 'leave': return pickPhrase([
+        'Ну ладно, как хотите.',
+        'Не интересно — до свидания.',
+        'Ок, если передумаете — пишите.',
+        'Понял, удачи.',
+        'Хорошо, не настаиваю.',
+        'Ладно, обращайтесь, если что.'
+      ]);
+      case 'shipping_only': return pickPhrase([
+        'Я не в Москве, могу только Авито Доставкой отправить.',
+        'Лично не получится, отправлю доставкой.',
+        'Далеко живу, давайте через Авито Доставку.',
+        'Могу отправить, упакую нормально.',
+        'Только доставка, сам не в Москве.',
+        'Отправлю, если устроит.'
+      ]);
+      case 'talk': return pickPhrase(SELL_TOPIC[topicOf(lastPlayerText(ctx.chat))] || SELL_TOPIC.other);
+      default: return pickPhrase(['Да, всё в силе.', 'Да, актуально.', 'Слушаю вас.', 'Всё так, как в описании.']);
     }
   };
 
@@ -5188,13 +6439,54 @@ window.DESK_PHOTO = [];
       case 'reject_price': return tpl(set, 'reject_price', vars);
       case 'crazy_price': return tpl({ crazy: BUY_CRAZY }, 'crazy', vars);
       case 'too_expensive': return tpl(set, 'too_expensive', vars);
-      case 'disclosed': return 'А, понятно. Тогда ' + fmt(intent.price) + ' ₽.';
-      case 'meet': return 'Ок, подъеду. Скиньте адрес.';
-      case 'leave': return 'Ладно, не интересно.';
-      case 'not_buying': return 'Пока подумаю.';
-      case 'nothing_to_disclose': return 'Да мне и так нормально.';
-      case 'talk': return 'Понял вас.';
-      default: return 'Хорошо.';
+      case 'disclosed': return pickPhrase([
+        'А, понятно. Тогда {p} ₽.',
+        'Ясно, спасибо, что сказали. Тогда {p} ₽.',
+        'Понял, с этим дефектом — {p} ₽.',
+        'Ок, тогда {p} ₽, и беру.',
+        'Спасибо за честность. {p} ₽?'
+      ]).replace('{p}', fmt(intent.price));
+      case 'meet': return pickPhrase([
+        'Ок, подъеду. Скиньте адрес.',
+        'Договорились, буду. Где встречаемся?',
+        'Хорошо, я на месте. Во сколько?',
+        'Принял, еду.',
+        'Ок, ждите, я подъеду.',
+        'Договорились, скиньте точку.'
+      ]);
+      case 'leave': return pickPhrase([
+        'Ладно, не интересно.',
+        'Понял, спасибо.',
+        'Не, спасибо.',
+        'Ок, тогда всё.',
+        'Ясно, до свидания.',
+        'Ну ладно.'
+      ]);
+      case 'not_buying': return pickPhrase([
+        'Пока подумаю.',
+        'Не, наверное пас.',
+        'Надо подумать.',
+        'Сомневаюсь.',
+        'Пока не готов.',
+        'Может, позже.'
+      ]);
+      case 'nothing_to_disclose': return pickPhrase([
+        'Да мне и так нормально.',
+        'Ок, спасибо.',
+        'Понял, ясно.',
+        'Хорошо, учту.',
+        'Не, всё устраивает.'
+      ]);
+      case 'answered': return pickPhrase([
+        'Понял, спасибо.',
+        'Хорошо, тогда так.',
+        'Ок, учту.',
+        'Спасибо за ответ.',
+        'Ясно, спасибо.',
+        'Принял.'
+      ]);
+      case 'talk': return pickPhrase(BUY_TOPIC[topicOf(lastPlayerText(ctx.chat))] || BUY_TOPIC.other);
+      default: return pickPhrase(['Хорошо.', 'Ок.', 'Понял.', 'Ясно.']);
     }
   };
 
@@ -5210,7 +6502,12 @@ window.DESK_PHOTO = [];
     messages.push({ role: 'system', content: 'Ответь одной короткой репликой продавца.' });
     const r = await AI.chat(messages, { temperature: 0.95 });
     if (!r.ok) return { text: AI.sellerLocal(ctx.intent, ctx), via: 'local', error: r.error };
-    return { text: clean(r.content), via: 'llm' };
+    const txt = clean(r.content);
+    if (!replyFitsPrice(txt, ctx.intent && ctx.intent.price) ||
+        (ctx.intent && ctx.intent.kind !== 'meet' && mentionsMeeting(txt))) {
+      return { text: AI.sellerLocal(ctx.intent, ctx), via: 'local' };
+    }
+    return { text: txt, via: 'llm' };
   };
 
   AI.buyerReply = async function (ctx) {
@@ -5220,7 +6517,12 @@ window.DESK_PHOTO = [];
     messages.push({ role: 'system', content: 'Ответь одной короткой репликой покупателя.' });
     const r = await AI.chat(messages, { temperature: 0.95 });
     if (!r.ok) return { text: AI.buyerLocal(ctx.intent, ctx), via: 'local', error: r.error };
-    return { text: clean(r.content), via: 'llm' };
+    const txt = clean(r.content);
+    if (!replyFitsPrice(txt, ctx.intent && ctx.intent.price) ||
+        (ctx.intent && ctx.intent.kind !== 'meet' && mentionsMeeting(txt))) {
+      return { text: AI.buyerLocal(ctx.intent, ctx), via: 'local' };
+    }
+    return { text: txt, via: 'llm' };
   };
 
   // приветствие в чате
@@ -5237,12 +6539,36 @@ window.DESK_PHOTO = [];
     }
     const anyOpener = () => D.OPENERS[Math.floor(Math.random() * D.OPENERS.length)];
     if (b.agreesAsIs && Math.random() < 0.7) {
-      return anyOpener() + ' Беру по вашей цене, если всё так, как на фото.';
+      return anyOpener() + ' Беру по вашей цене, если всё так, как в описании.';
     }
     if (Math.random() < 0.35) return anyOpener();
     const set = BUY_TPL[b.kind] || BUY_TPL.normal;
     return tpl(set, 'open', { budget: fmt(b.budget), price: fmt(b.offer) });
   };
+
+  // числа в реплике: нужны, чтобы ИИ не выдумал цену
+  function moneyNumbers(text) {
+    const out = [];
+    const re = /\d[\d\s]{0,12}/g;
+    let m;
+    while ((m = re.exec(String(text)))) {
+      const n = parseInt(m[0].replace(/\s+/g, ''), 10);
+      if (isFinite(n) && n >= 500 && n <= 50000000) out.push(n);
+    }
+    return out;
+  }
+
+  function replyFitsPrice(text, price) {
+    if (!price) return true;
+    const nums = moneyNumbers(text);
+    if (!nums.length) return true;
+    const tol = Math.max(100, price * 0.02);
+    return nums.some(n => Math.abs(n - price) <= tol);
+  }
+
+  function mentionsMeeting(text) {
+    return /(встреч|посмотр|подъех|подъед|где и когда|когда удобн|метро|адрес|приезж)/i.test(String(text || ''));
+  }
 
   function clean(s) {
     return String(s)
@@ -5253,6 +6579,7 @@ window.DESK_PHOTO = [];
   }
 
   root.AI = AI;
+  AI.topicOf = topicOf;
   if (typeof module !== 'undefined' && module.exports) module.exports = AI;
 })(typeof window !== 'undefined' ? window : globalThis);
 
@@ -5570,7 +6897,9 @@ window.DESK_PHOTO = [];
 
   function rollDefects(count, model) {
     const pool = (root.DATA.DEFECT_KEYS || []).filter(k => {
-      if ((k === 'icloud' || k === 'faceid') && model.brand !== 'Apple') return false;
+      // в опте не должно быть «мёртвых» лотов из-за iCloud/IMEI — это для чёрного рынка
+      if (k === 'icloud' || k === 'imei') return false;
+      if (k === 'faceid' && model.brand !== 'Apple') return false;
       return true;
     });
     const out = [];
@@ -5584,16 +6913,22 @@ window.DESK_PHOTO = [];
   function makePhone(item, day) {
     const m = root.Engine.MODELS_BY_ID[item.modelId];
     const r = Math.random();
-    let cosmetic, defs;
-    if (r < 0.22) {
+    let cosmetic, defs, brick = false;
+    if (r < 0.24) {
       cosmetic = 0.94 + Math.random() * 0.06;
       defs = [];
-    } else if (r < 0.68) {
+    } else if (r < 0.64) {
       cosmetic = 0.55 + Math.random() * 0.32;
       defs = rollDefects(1, m);
-    } else {
+    } else if (r < 0.92) {
       cosmetic = 0.25 + Math.random() * 0.35;
       defs = rollDefects(2, m);
+    } else {
+      // кирпич: не включается и не разлочивается — только на запчасти
+      cosmetic = 0.3 + Math.random() * 0.3;
+      const hard = (m.brand === 'Apple' && Math.random() < 0.5) ? 'icloud' : 'imei';
+      defs = ['screen_dead', hard];
+      brick = true;
     }
     const base = root.Engine.cleanMarket(m, item.storage);
     return {
@@ -5603,9 +6938,14 @@ window.DESK_PHOTO = [];
       color: pick(root.DATA.COLORS || ['чёрный']),
       cosmetic: cosmetic,
       tier: m.tier,
+      os: root.Engine.stockOS(m),
       defects: defs.map(k => ({ key: k, found: true, disclosed: false })),
+      brick: brick,
       boughtFor: Math.round(base * (0.4 + Math.random() * 0.2) / 10) * 10,
       boughtDay: day || 1,
+      box: Math.random() < 0.28,
+      docs: Math.random() < 0.22,
+      charger: Math.random() < 0.5,
       repaired: [],
       listed: false,
       sold: false
@@ -5613,6 +6953,7 @@ window.DESK_PHOTO = [];
   }
 
   function conditionText(p) {
+    if (p.brick) return 'Кирпич — не включается, только на запчасти';
     const n = (p.defects || []).length;
     if (!n && p.cosmetic > 0.9) return 'Состояние: как новый';
     if (!n) return 'Состояние: хорошее, без дефектов';
@@ -5703,6 +7044,10 @@ window.DESK_PHOTO = [];
       (defs.length
         ? defs.map(d => '<span class="dtag bad">' + esc(d) + '</span>').join('')
         : '<span class="dtag ok">дефектов нет</span>') +
+      (p.box ? '<span class="dtag ok">коробка</span>' : '') +
+      (p.docs ? '<span class="dtag ok">чек</span>' : '') +
+      (p.charger ? '<span class="dtag ok">зарядка</span>' : '') +
+      (p.brick ? '<span class="dtag bad">кирпич</span>' : '') +
       '</div>' +
       '<div class="ws-reveal-price">оценка ≈ ' + money(root.Engine.playerValue(p)) + '</div>' +
       '</div>' +
@@ -5773,7 +7118,7 @@ window.DESK_PHOTO = [];
     if (!boxes.length) return '';
     let html = '<div class="section-title">Коробки <span class="hint">' + boxes.length + '</span></div><div class="ws-boxes">';
     for (const b of boxes) {
-      html += '<div class="ws-box">' + boxSVG() +
+      html += '<div class="ws-box' + (b.red ? ' red' : '') + '">' + boxSVG() +
         '<div class="ws-box-main"><b>' + esc(b.name) + '</b>' +
         '<span>' + b.phones.length + ' из ' + b.count + ' телефонов</span></div>' +
         '<button class="ws-btn primary" data-ws-open="' + b.id + '">Открыть</button>' +
@@ -5825,6 +7170,748 @@ window.DESK_PHOTO = [];
   };
 })(window);
 
+
+/* ===== black.js ===== */
+/* ============================================================
+   MIDE — чёрный рынок: доступ на 30 минут, объявления
+   со скидкой 70–90%, продавцы со своими шансами.
+   ============================================================ */
+(function (root) {
+  'use strict';
+
+  const ACCESS_MS = 30 * 60 * 1000;
+  const OFFER_MS = 60 * 1000;
+  const MAX_OFFERS = 5;
+  const ACCESS_PRICE = 5000;
+
+  const SELLERS = [
+    { id: 'china', name: 'Иван из Китая', note: 'возит напрямую', lots: 0.55 },
+    { id: 'service', name: 'Сервис на районе', note: 'телефоны после ремонта', lots: 0.2 },
+    { id: 'shady', name: 'Мутный тип', note: 'встреча у гаражей', lots: 0.15 },
+    { id: 'warranty', name: 'Гарант', note: 'обещает гарантию 30 дней', lots: 0.1 }
+  ];
+
+  function rnd(n) { return Math.floor(Math.random() * n); }
+  function pick(a) { return a[rnd(a.length)]; }
+  function money(n) { return new Intl.NumberFormat('ru-RU').format(Math.round(n || 0)) + ' ₽'; }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  }
+  function uid(p) { return p + '_' + Date.now().toString(36) + '_' + rnd(99999); }
+  function models() {
+    const out = [];
+    const all = root.Engine.MODELS_BY_ID;
+    for (const id in all) out.push(all[id]);
+    return out;
+  }
+
+  function ensure(state) {
+    if (!state) return;
+    state.black = state.black || { until: 0, offers: [], nextAt: 0 };
+    const b = state.black;
+    const now = Date.now();
+    if (!b.until || now > b.until) {
+      b.offers = [];
+      b.nextAt = 0;
+      return;
+    }
+    if (!b.offers.length && !b.nextAt) {
+      for (let i = 0; i < MAX_OFFERS; i++) b.offers.push(makeOffer());
+      b.nextAt = now + OFFER_MS;
+      return;
+    }
+    let guard = 0;
+    while (now >= b.nextAt && b.offers.length < MAX_OFFERS && guard < 8) {
+      b.offers.push(makeOffer());
+      b.nextAt += OFFER_MS;
+      guard++;
+    }
+    if (now >= b.nextAt) b.nextAt = now + OFFER_MS;
+    if (b.offers.length > MAX_OFFERS) b.offers = b.offers.slice(-MAX_OFFERS);
+  }
+
+  function makeOffer() {
+    const seller = pick(SELLERS);
+    const isLot = Math.random() < seller.lots;
+    const all = models();
+    const count = isLot ? (3 + rnd(6)) : 1;
+    const items = [];
+    let market = 0;
+    for (let i = 0; i < count; i++) {
+      const m = pick(all);
+      const storage = (m.storages && m.storages.length) ? pick(m.storages) : 128;
+      items.push({ modelId: m.id, storage: storage });
+      market += root.Engine.cleanMarket(m, storage);
+    }
+    const factor = 0.10 + Math.random() * 0.20; // скидка 70–90%
+    const price = Math.max(700, Math.round(market * factor / 100) * 100);
+    return {
+      id: uid('K'),
+      seller: seller.id,
+      sellerName: seller.name,
+      sellerNote: seller.note,
+      kind: isLot ? 'lot' : 'single',
+      items: items,
+      price: price,
+      market: market,
+      createdAt: Date.now()
+    };
+  }
+
+  function buyAccess() {
+    const App = root.App;
+    const st = App.state;
+    if (st.balance < ACCESS_PRICE) {
+      App.toast('Нужно ' + money(ACCESS_PRICE) + ' на доступ', 'bad');
+      return;
+    }
+    st.balance -= ACCESS_PRICE;
+    st.stats.spent = (st.stats.spent || 0) + ACCESS_PRICE;
+    st.black = { until: Date.now() + ACCESS_MS, offers: [], nextAt: 0 };
+    ensure(st);
+    if (root.Engine.pushLog) root.Engine.pushLog(st, { text: 'Оплачен доступ на чёрный рынок', tone: '' });
+    App.save();
+    App.render();
+    if (App.view === 'apps' && App.renderApps) App.renderApps();
+    App.toast('Доступ на 30 минут открыт', 'good');
+  }
+
+  function rollOutcome() {
+    const r = Math.random();
+    if (r < 0.40) return 'exact';
+    if (r < 0.55) return 'scam';
+    if (r < 0.75) return 'brick';
+    return 'defects';
+  }
+
+  function defectPool(model) {
+    return (root.DATA.DEFECT_KEYS || []).filter(k => {
+      if ((k === 'icloud' || k === 'faceid') && model.brand !== 'Apple') return false;
+      return true;
+    });
+  }
+
+  function makePhone(item, mode, day) {
+    const m = root.Engine.MODELS_BY_ID[item.modelId];
+    let cosmetic, defs, found;
+    if (mode === 'exact') {
+      cosmetic = 0.85 + Math.random() * 0.15;
+      defs = [];
+      found = true;
+    } else if (mode === 'brick') {
+      cosmetic = 0.35 + Math.random() * 0.3;
+      defs = ['screen_dead', (m.brand === 'Apple' && Math.random() < 0.5) ? 'icloud' : 'imei'];
+      found = true;
+    } else {
+      cosmetic = 0.6 + Math.random() * 0.3;
+      const n = 1 + rnd(2);
+      defs = [];
+      const pool = defectPool(m);
+      for (let i = 0; i < n; i++) {
+        const k = pick(pool);
+        if (defs.indexOf(k) < 0) defs.push(k);
+      }
+      found = false;
+    }
+    const base = root.Engine.cleanMarket(m, item.storage);
+    return {
+      id: uid('P'),
+      modelId: m.id,
+      storage: item.storage,
+      color: pick(root.DATA.COLORS || ['чёрный']),
+      cosmetic: cosmetic,
+      tier: m.tier,
+      os: root.Engine.stockOS(m),
+      defects: defs.map(k => ({ key: k, found: found || !!(root.DATA.DEFECTS[k] && root.DATA.DEFECTS[k].visible), disclosed: false })),
+      boughtFor: Math.round(base * 0.12 / 10) * 10,
+      boughtDay: day || 1,
+      box: Math.random() < 0.3,
+      docs: Math.random() < 0.25,
+      charger: Math.random() < 0.45,
+      brick: mode === 'brick',
+      repaired: [],
+      listed: false,
+      sold: false
+    };
+  }
+
+  function buy(id) {
+    const App = root.App;
+    const st = App.state;
+    ensure(st);
+    const offer = (st.black.offers || []).find(o => o.id === id);
+    if (!offer) return;
+    if (st.balance < offer.price) {
+      App.toast('Не хватает денег: нужно ' + money(offer.price), 'bad');
+      return;
+    }
+    st.balance -= offer.price;
+    st.stats.spent = (st.stats.spent || 0) + offer.price;
+    st.black.offers = st.black.offers.filter(o => o.id !== id);
+
+    const mode = rollOutcome();
+    App.closeModal();
+
+    if (mode === 'scam') {
+      if (root.Engine.pushLog) root.Engine.pushLog(st, { text: 'Чёрный рынок: продавец ' + offer.sellerName + ' пропал с деньгами', tone: 'bad' });
+      App.save();
+      App.render();
+      if (App.view === 'apps' && App.renderApps) App.renderApps();
+      App.toast('Продавец пропал. Деньги ушли', 'bad');
+      return;
+    }
+
+    const phones = offer.items.map(it => makePhone(it, mode, st.day));
+    st.boxes = st.boxes || [];
+    st.boxes.push({
+      id: uid('BB'),
+      name: 'Чёрный рынок · ' + offer.sellerName,
+      hint: offer.sellerName,
+      count: phones.length,
+      phones: phones,
+      boughtFor: offer.price,
+      day: st.day,
+      createdAt: Date.now(),
+      red: true
+    });
+
+    let text = '';
+    if (mode === 'exact') text = phones.length > 1 ? 'Пришла посылка: ' + phones.length + ' телефонов, как обещали' : 'Пришёл ровно тот телефон';
+    else if (mode === 'brick') text = phones.length > 1 ? 'Посылка пришла, но телефоны не включаются' : 'Пришёл кирпич — телефон не включается';
+    else text = phones.length > 1 ? 'Пришла посылка, но с дефектами' : 'Телефон пришёл, но с дефектами';
+
+    if (root.Engine.pushLog) root.Engine.pushLog(st, { text: 'Чёрный рынок: ' + text.toLowerCase(), tone: mode === 'exact' ? 'good' : 'bad' });
+    App.save();
+    App.render();
+    if (App.view === 'apps' && App.renderApps) App.renderApps();
+    App.toast(text + ' — коробка на складе', mode === 'exact' ? 'good' : 'bad');
+  }
+
+  function openOffer(id) {
+    const App = root.App;
+    const offer = ((App.state.black || {}).offers || []).find(o => o.id === id);
+    if (!offer) return;
+    const first = offer.items[0];
+    const m = root.Engine.MODELS_BY_ID[first.modelId] || {};
+    const pic = root.PHOTO ? root.PHOTO.ph(m.id) : '';
+    const list = offer.items.map(it => {
+      const mm = root.Engine.MODELS_BY_ID[it.modelId] || {};
+      return '<div class="ws-item"><span>' + esc(mm.name || 'Телефон') + '</span><b>' + it.storage + ' ГБ</b></div>';
+    }).join('');
+    App.modal(
+      '<h3>' + (offer.kind === 'lot' ? 'Партия' : 'Объявление') + '</h3>' +
+      '<div class="sub">' + esc(offer.sellerName) + ' · ' + esc(offer.sellerNote) + '</div>' +
+      '<div class="bk-modal-pic">' + pic + '</div>' +
+      '<div class="ws-list">' + list + '</div>' +
+      '<div class="btn-row mt12">' +
+      '<button class="btn ghost" id="bk-close">Закрыть</button>' +
+      '<button class="btn primary" id="bk-buy">Купить за ' + money(offer.price) + '</button>' +
+      '</div>'
+    );
+    document.getElementById('bk-close').onclick = () => App.closeModal();
+    document.getElementById('bk-buy').onclick = () => buy(id);
+  }
+
+  function offerCard(offer) {
+    const m = root.Engine.MODELS_BY_ID[offer.items[0].modelId] || {};
+    const disc = Math.round((1 - offer.price / Math.max(1, offer.market)) * 100);
+    const pic = root.PHOTO ? root.PHOTO.ph(m.id) : '';
+    const name = offer.kind === 'lot'
+      ? 'Партия · ' + offer.items.length + ' телефонов'
+      : (m.name || 'Телефон') + ' ' + offer.items[0].storage + ' ГБ';
+    return '<div class="card bk-card">' +
+      '<div class="thumb bk-thumb">' +
+      '<span class="bk-disc">−' + disc + '%</span>' +
+      '<div class="bk-photo">' + pic + '</div>' +
+      '</div>' +
+      '<div class="card-body">' +
+      '<div class="card-title">' + esc(name) + '</div>' +
+      '<div class="card-price">' + money(offer.price) + '</div>' +
+      '<div class="card-mkt">обычно ' + money(offer.market) + '</div>' +
+      '<div class="card-desc">' + esc(offer.sellerName) + ' · ' + esc(offer.sellerNote) + '</div>' +
+      '<div class="ws-lot-actions">' +
+      '<button class="ws-btn" data-bk-info="' + offer.id + '">Подробнее</button>' +
+      '<button class="ws-btn primary" data-bk-buy="' + offer.id + '">Купить</button>' +
+      '</div>' +
+      '</div></div>';
+  }
+
+  function marketHTML(state) {
+    ensure(state);
+    const b = state.black || {};
+    const left = Math.max(0, (b.until || 0) - Date.now());
+
+    if (!left) {
+      return '<div class="bk-lock">' +
+        '<div class="bk-lock-icon">☠</div>' +
+        '<b>Чёрный рынок</b>' +
+        '<p>Доступ на 30 минут. Внутри объявления со скидкой 70–90%: часть продавцов честные, часть кидают, часть присылает кирпичи.</p>' +
+        '<button class="ws-btn primary bk-access" data-bk-access="1">Купить доступ — ' + money(ACCESS_PRICE) + '</button>' +
+        '</div>';
+    }
+
+    let html = '<div class="bk-head"><b>Объявления</b><span>доступ <b id="bk-timer">--:--</b></span></div>';
+    if (!b.offers.length) {
+      html += '<div class="ws-empty">Продавцы пока молчат. Новое объявление через минуту.</div>';
+    } else {
+      html += '<div class="cards">';
+      for (const o of b.offers) html += offerCard(o);
+      html += '</div>';
+    }
+    html += '<div class="bk-warn">Каждый лот — лотерея. Возврата нет.</div>';
+    return html;
+  }
+
+  document.addEventListener('click', function (ev) {
+    if (!ev.target || !ev.target.closest) return;
+    const acc = ev.target.closest('[data-bk-access]');
+    if (acc) { buyAccess(); return; }
+    const info = ev.target.closest('[data-bk-info]');
+    if (info) { openOffer(info.getAttribute('data-bk-info')); return; }
+    const buyBtn = ev.target.closest('[data-bk-buy]');
+    if (buyBtn) { buy(buyBtn.getAttribute('data-bk-buy')); return; }
+  });
+
+  setInterval(function () {
+    const App = root.App;
+    if (!App || !App.state) return;
+    const b = App.state.black;
+    if (b && b.until) {
+      const before = (b.offers || []).length;
+      ensure(App.state);
+      const after = (b.offers || []).length;
+      if (App.view === 'apps' && after !== before && App.renderApps) App.renderApps();
+    }
+    const el = document.getElementById('bk-timer');
+    if (el && b && b.until) {
+      const left = Math.max(0, b.until - Date.now());
+      const m = Math.floor(left / 60000);
+      const s = Math.floor((left % 60000) / 1000);
+      el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    }
+  }, 1000);
+
+  root.Black = {
+    ensure: ensure,
+    marketHTML: marketHTML,
+    buyAccess: buyAccess,
+    buy: buy,
+    openOffer: openOffer,
+    icon: function () {
+      return '<svg viewBox="0 0 64 64" width="46" height="46" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round">' +
+        '<path d="M32 12c-9 0-16 7-16 16 0 6 3 10 7 12v6h18v-6c4-2 7-6 7-12 0-9-7-16-16-16z"/>' +
+        '<circle cx="26" cy="28" r="2.6" fill="currentColor" stroke="none"/>' +
+        '<circle cx="38" cy="28" r="2.6" fill="currentColor" stroke="none"/>' +
+        '<path d="M29 46v4M35 46v4"/>' +
+        '</svg>';
+    }
+  };
+})(window);
+
+/* ===== jail.js ===== */
+/* ============================================================
+   MIDE — Jailbreak: загрузчик, root, кастомная ОС, iCloud.
+   Мини-игры: полоса с зоной + ввод команды.
+   ============================================================ */
+(function (root) {
+  'use strict';
+
+  const CMDS = [
+    'fastboot oem unlock',
+    'fastboot flashing unlock',
+    'fastboot getvar unlocked',
+    'adb reboot bootloader',
+    'adb shell su',
+    'fastboot flash unlock'
+  ];
+
+  function rnd(n) { return Math.floor(Math.random() * n); }
+  function pick(a) { return a[rnd(a.length)]; }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  }
+
+  let game = null;
+  let barTimer = null;
+
+  function stopGame() {
+    if (barTimer) { clearInterval(barTimer); barTimer = null; }
+    if (game && game.tick) { clearInterval(game.tick); game.tick = null; }
+    game = null;
+  }
+
+  function startTimer(sec) {
+    if (!game) return;
+    clearInterval(game.tick);
+    game.left = sec;
+    const tick = () => {
+      const e = document.getElementById('jb-time');
+      if (e) e.textContent = Math.max(0, game.left);
+      if (game.left <= 0) {
+        clearInterval(game.tick);
+        failGame();
+        return;
+      }
+      game.left--;
+    };
+    tick();
+    game.tick = setInterval(tick, 1000);
+  }
+
+  /* ---------- выбор телефона ---------- */
+  function pickHTML(state) {
+    const phones = (state.phones || []).filter(p => !p.sold);
+    let html = '<div class="jb-head"><b>Выбери телефон</b><span>' + phones.length + ' шт</span></div>';
+    if (!phones.length) return html + '<div class="ws-empty">На складе пусто.</div>';
+    html += '<div class="jb-list">';
+    for (const p of phones) {
+      const m = root.Engine.MODELS_BY_ID[p.modelId] || {};
+      const pic = root.PHOTO ? root.PHOTO.ph(m.id) : '';
+      const os = p.os ? root.Engine.osLabel(p.os) : 'ОС неизвестна';
+      html += '<div class="jb-phone' + (p.brick ? ' dead' : '') + '" data-jp="' + p.id + '">' +
+        '<div class="jb-pic">' + pic + '</div>' +
+        '<div class="jb-info"><b>' + esc(m.name || 'Телефон') + ' ' + p.storage + ' ГБ</b>' +
+        '<span>' + esc(os) + '</span>' +
+        '<i>' + (p.brick ? 'кирпич' : [p.bl ? 'загрузчик открыт' : 'загрузчик закрыт', p.root ? 'root' : ''].filter(Boolean).join(' · ')) + '</i></div>' +
+        '<div class="jb-go">›</div></div>';
+    }
+    return html + '</div>';
+  }
+
+  function menuHTML(state, p) {
+    const m = root.Engine.MODELS_BY_ID[p.modelId] || {};
+    const pic = root.PHOTO ? root.PHOTO.ph(m.id) : '';
+    const os = p.os ? root.Engine.osLabel(p.os) : 'неизвестна';
+    const isApple = m.brand === 'Apple';
+    let html = '<div class="jb-head"><button class="apps-back" data-jb-back="1">←</button><b>' + esc(m.name || 'Телефон') + '</b>' +
+      '<span>' + p.storage + ' ГБ</span></div>';
+    html += '<div class="jb-card"><div class="jb-pic big">' + pic + '</div>' +
+      '<div class="jb-card-info"><b>' + esc(os) + '</b>' +
+      '<span>' + (p.bl ? 'загрузчик разблокирован' : 'загрузчик закрыт') + '</span>' +
+      '<span>' + (p.root ? 'root получен' : 'без root') + '</span>' +
+      (p.brick ? '<span class="jb-bad">кирпич — не включается</span>' : '') + '</div></div>';
+
+    html += '<div class="jb-actions">';
+    if (p.brick) {
+      html += '<div class="ws-empty">Телефон мёртв. Только на запчасти.</div>';
+    } else {
+      html += '<button class="jb-btn" data-ja="bl"' + (p.bl ? ' disabled' : '') + '>' +
+        (p.bl ? 'Загрузчик уже разблокирован' : 'Разблокировать загрузчик') + '</button>';
+      html += '<button class="jb-btn" data-ja="root"' + (p.root ? ' disabled' : '') + '>' +
+        (p.root ? 'Root уже есть' : 'Получить root (+4% к цене)') + '</button>';
+      html += '<button class="jb-btn" data-ja="os"' + (isApple ? ' disabled' : '') + '>' +
+        (isApple ? 'Кастомная ОС недоступна для iPhone' : 'Установить кастомную ОС') + '</button>';
+      if (isApple) {
+        html += '<button class="jb-btn danger" data-ja="icloud">Снять блокировку iCloud</button>';
+      }
+    }
+    html += '</div>';
+    return html;
+  }
+
+  /* ---------- мини-игра ---------- */
+  function startGame(cfg) {
+    stopGame();
+    game = {
+      cfg: cfg,
+      phase: 0,
+      attempts: cfg.attempts || 3,
+      pos: 0,
+      dir: 1
+    };
+    nextPhase();
+  }
+
+  function failGame() {
+    if (!game) return;
+    game.attempts--;
+    if (game.attempts <= 0) {
+      const cfg = game.cfg;
+      stopGame();
+      root.App.closeModal();
+      if (cfg.onLose) cfg.onLose();
+      return;
+    }
+    game.phase = 0;
+    root.App.toast('Ошибка. Осталось попыток: ' + game.attempts, 'bad');
+    nextPhase();
+  }
+
+  function nextPhase() {
+    if (!game) return;
+    if (game.phase >= game.cfg.phases.length) {
+      const cfg = game.cfg;
+      stopGame();
+      root.App.closeModal();
+      if (cfg.onWin) cfg.onWin();
+      return;
+    }
+    const ph = game.cfg.phases[game.phase];
+    if (ph.type === 'bar') renderBar(ph); else renderCmd(ph);
+  }
+
+  function renderBar(ph) {
+    const zoneW = ph.zone || 18;
+    const center = 20 + Math.random() * 60;
+    const left = Math.max(2, Math.min(98 - zoneW, center - zoneW / 2));
+    game.zoneCenter = left + zoneW / 2;
+    game.zoneW = zoneW;
+    game.pos = 0;
+    game.dir = 1;
+    game.speed = ph.speed || 1.2;
+
+    root.App.modal(
+      '<h3>' + esc(game.cfg.title) + '</h3>' +
+      '<div class="sub">Останови бегунок в зелёной зоне. Попыток: ' + game.attempts +
+      ' · <b id="jb-time">' + (ph.time || 6) + '</b> с</div>' +
+      '<div class="jb-track"><div class="jb-zone" style="left:' + left + '%;width:' + zoneW + '%"></div>' +
+      '<div class="jb-marker" id="jb-marker"></div></div>' +
+      '<div class="btn-row mt12"><button class="btn primary" id="jb-stop">СТОП</button></div>'
+    );
+
+    const marker = document.getElementById('jb-marker');
+    barTimer = setInterval(() => {
+      if (!marker) { clearInterval(barTimer); return; }
+      game.pos += game.speed * game.dir;
+      if (game.pos > 100) { game.pos = 100; game.dir = -1; }
+      if (game.pos < 0) { game.pos = 0; game.dir = 1; }
+      marker.style.left = game.pos + '%';
+    }, 16);
+    startTimer(ph.time || 6);
+
+    document.getElementById('jb-stop').onclick = () => {
+      clearInterval(barTimer);
+      barTimer = null;
+      clearInterval(game.tick);
+      const ok = Math.abs(game.pos - game.zoneCenter) <= game.zoneW / 2;
+      if (ok) {
+        game.phase++;
+        root.App.toast('Попадание', 'good');
+        nextPhase();
+      } else {
+        failGame();
+      }
+    };
+  }
+
+  function renderCmd(ph) {
+    const correct = pick(CMDS);
+    let opts = CMDS.filter(c => c !== correct);
+    opts = [correct, opts[0], opts[1], opts[2]].sort(() => Math.random() - 0.5);
+    root.App.modal(
+      '<h3>' + esc(game.cfg.title) + '</h3>' +
+      '<div class="sub">Введи правильную команду. Попыток: ' + game.attempts +
+      ' · <b id="jb-time">' + (ph.time || 8) + '</b> с</div>' +
+      '<div class="jb-hint">Правильная: <b>' + esc(correct) + '</b></div>' +
+      '<div class="jb-cmds">' + opts.map(c =>
+        '<button class="jb-cmd" data-cmd="' + esc(c) + '">' + esc(c) + '</button>').join('') + '</div>'
+    );
+    startTimer(ph.time || 8);
+    document.querySelectorAll('[data-cmd]').forEach(b => {
+      b.onclick = () => {
+        clearInterval(game.tick);
+        if (b.getAttribute('data-cmd') === correct) {
+          game.phase++;
+          root.App.toast('Команда принята', 'good');
+          nextPhase();
+        } else {
+          failGame();
+        }
+      };
+    });
+  }
+
+  /* ---------- действия ---------- */
+  function applyWin(p, fn) {
+    fn();
+    root.App.save();
+    root.App.render();
+    root.App.renderApps();
+    root.App.toast('Готово', 'good');
+  }
+
+  function doBL(p) {
+    const m = root.Engine.MODELS_BY_ID[p.modelId] || {};
+    const osW = p.os ? p.os.w : 4;
+    // старая открытая прошивка — просто кнопка
+    if (osW <= 3 && !p.customOS) {
+      applyWin(p, () => { p.bl = true; });
+      return;
+    }
+    const easy = osW <= 5;
+    startGame({
+      title: 'Разблокировка загрузчика',
+      attempts: easy ? 3 : 2,
+      phases: [{ type: 'bar', zone: easy ? 22 : 14, speed: easy ? 1.0 : 1.6 }, { type: 'cmd' }],
+      onWin: () => applyWin(p, () => { p.bl = true; }),
+      onLose: () => {
+        p.brick = true; p.defects = [];
+        root.App.save(); root.App.render(); root.App.renderApps();
+        root.App.toast('Телефон превратился в кирпич', 'bad');
+      }
+    });
+  }
+
+  function doRoot(p) {
+    if (!p.bl) { root.App.toast('Сначала разблокируй загрузчик', 'bad'); return; }
+    startGame({
+      title: 'Получение root',
+      attempts: 2,
+      phases: [{ type: 'cmd' }],
+      onWin: () => applyWin(p, () => { p.root = true; }),
+      onLose: () => { root.App.toast('Не получилось, телефон цел', 'bad'); }
+    });
+  }
+
+  function openOSList(p) {
+    if (!p.bl) { root.App.toast('Сначала разблокируй загрузчик', 'bad'); return; }
+    const fams = Object.keys(root.Engine.OS_FAMILIES).filter(k => k !== 'ios');
+    let html = '<h3>Кастомная ОС</h3><div class="sub">Сначала выбери оболочку — потом версию.</div><div class="jb-oslist">';
+    for (const key of fams) {
+      const fam = root.Engine.OS_FAMILIES[key];
+      html += '<button class="jb-os ' + (key === 'ips' ? 'ips' : '') + '" data-jfam="' + key + '">' +
+        '<b>' + esc(fam.name) + '</b><span>' + fam.list.length + ' версий</span></button>';
+    }
+    html += '</div>';
+    root.App.modal(html);
+    document.querySelectorAll('[data-jfam]').forEach(b => {
+      b.onclick = () => openOSVersions(p, b.getAttribute('data-jfam'));
+    });
+  }
+
+  function openOSVersions(p, key) {
+    const m = root.Engine.MODELS_BY_ID[p.modelId] || {};
+    const fam = root.Engine.OS_FAMILIES[key];
+    let html = '<h3>' + esc(fam.name) + '</h3>' +
+      '<div class="sub">Зелёные — встанут идеально, оранжевые — с лагами, красные — не для этого телефона.</div><div class="jb-oslist">';
+    for (const it of fam.list) {
+      const os = { id: key + '_' + it.v.replace(/[^a-z0-9]/gi, ''), name: it.v, w: it.w, a: it.a, family: key, custom: !!it.custom };
+      const blocked = key === 'ios' && m.brand !== 'Apple';
+      const c = blocked ? 'bad' : root.Engine.osCompat(m, os);
+      html += '<button class="jb-os ' + c + '" data-jos="' + os.id + '">' +
+        '<b>' + esc(it.v) + '</b><span>' + (it.a ? 'Android ' + it.a : (it.custom ? 'кастомная' : (blocked ? 'только iPhone' : ''))) + '</span></button>';
+    }
+    html += '</div>';
+    root.App.modal(html);
+    document.querySelectorAll('[data-jos]').forEach(b => {
+      b.onclick = () => {
+        const id = b.getAttribute('data-jos');
+        const item = fam.list.find(it => (key + '_' + it.v.replace(/[^a-z0-9]/gi, '')) === id);
+        if (!item) return;
+        if (key === 'ios' && m.brand !== 'Apple') {
+          root.App.toast('iOS ставится только на iPhone', 'bad');
+          return;
+        }
+        root.App.closeModal();
+        installOS(p, { id: id, name: item.v, w: item.w, a: item.a, family: key, custom: !!item.custom });
+      };
+    });
+  }
+
+  function installOS(p, os) {
+    // кастомная iOS на Android — только для отчаянных
+    if (os.custom) {
+      const lvl = os.w; // 3..10
+      const phases = lvl >= 8
+        ? [{ type: 'bar', zone: 6, speed: 3.2, time: 3 }, { type: 'cmd', time: 4 },
+           { type: 'bar', zone: 6, speed: 3.4, time: 3 }, { type: 'cmd', time: 4 },
+           { type: 'bar', zone: 6, speed: 3.6, time: 3 }]
+        : lvl >= 6
+          ? [{ type: 'bar', zone: 8, speed: 2.8, time: 3 }, { type: 'cmd', time: 4 },
+             { type: 'bar', zone: 8, speed: 3.0, time: 3 }, { type: 'cmd', time: 4 }]
+          : [{ type: 'bar', zone: 14, speed: 2.0, time: 5 }, { type: 'cmd', time: 6 },
+             { type: 'bar', zone: 14, speed: 2.2, time: 5 }];
+      startGame({
+        title: 'Установка ' + os.name,
+        attempts: lvl >= 5 ? 1 : 2,
+        phases: phases,
+        onWin: () => applyWin(p, () => { p.os = os; p.customOS = true; }),
+        onLose: () => {
+          p.brick = true; p.defects = [];
+          root.App.save(); root.App.render(); root.App.renderApps();
+          root.App.toast('Прошивка сорвалась. Телефон — кирпич', 'bad');
+        }
+      });
+      return;
+    }
+    const hard = os.w >= 8;
+    const mid = os.w >= 5;
+    const phases = hard
+      ? [{ type: 'bar', zone: 8, speed: 2.6, time: 4 }, { type: 'cmd', time: 5 },
+         { type: 'bar', zone: 8, speed: 2.8, time: 4 }, { type: 'cmd', time: 5 }]
+      : mid
+        ? [{ type: 'bar', zone: 13, speed: 1.9, time: 5 }, { type: 'cmd', time: 6 },
+           { type: 'bar', zone: 12, speed: 2.1, time: 5 }]
+        : [{ type: 'bar', zone: 20, speed: 1.3, time: 7 }, { type: 'cmd', time: 8 },
+           { type: 'bar', zone: 18, speed: 1.5, time: 7 }];
+    startGame({
+      title: 'Установка ' + os.name,
+      attempts: hard ? 1 : (mid ? 2 : 3),
+      phases: phases,
+      onWin: () => applyWin(p, () => { p.os = os; p.customOS = true; }),
+      onLose: () => {
+        p.brick = true; p.defects = [];
+        root.App.save(); root.App.render(); root.App.renderApps();
+        root.App.toast('Прошивка сорвалась. Телефон — кирпич', 'bad');
+      }
+    });
+  }
+
+  function doICloud(p) {
+    const osW = p.os ? p.os.w : 5;
+    const hard = osW >= 7;
+    startGame({
+      title: 'Снятие iCloud',
+      attempts: hard ? 1 : 3,
+      phases: hard
+        ? [{ type: 'bar', zone: 10, speed: 2.2 }, { type: 'cmd' }, { type: 'cmd' }, { type: 'cmd' }]
+        : [{ type: 'bar', zone: 20, speed: 1.2 }, { type: 'cmd' }],
+      onWin: () => applyWin(p, () => {
+        p.defects = (p.defects || []).filter(d => d.key !== 'icloud');
+        p.icloudOff = true;
+      }),
+      onLose: () => { root.App.toast('Не вышло, блокировка осталась', 'bad'); }
+    });
+  }
+
+  document.addEventListener('click', function (ev) {
+    if (!ev.target || !ev.target.closest) return;
+    const ph = ev.target.closest('[data-jp]');
+    if (ph) { root.App.jailPhoneId = ph.getAttribute('data-jp'); root.App.renderApps(); return; }
+    const back = ev.target.closest('[data-jb-back]');
+    if (back) { root.App.jailPhoneId = null; root.App.renderApps(); return; }
+    const act = ev.target.closest('[data-ja]');
+    if (act) {
+      const App = root.App;
+      const p = (App.state.phones || []).find(x => x.id === App.jailPhoneId);
+      if (!p) return;
+      const a = act.getAttribute('data-ja');
+      if (a === 'bl') doBL(p);
+      if (a === 'root') doRoot(p);
+      if (a === 'os') openOSList(p);
+      if (a === 'icloud') doICloud(p);
+      return;
+    }
+  });
+
+  root.Jail = {
+    viewHTML: function (state) {
+      const App = root.App;
+      App.jailPhoneId = App.jailPhoneId || null;
+      const p = App.jailPhoneId ? (state.phones || []).find(x => x.id === App.jailPhoneId) : null;
+      if (p) return menuHTML(state, p);
+      App.jailPhoneId = null;
+      return pickHTML(state);
+    },
+    icon: function () {
+      return '<svg viewBox="0 0 64 64" width="46" height="46" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round">' +
+        '<rect x="14" y="28" width="36" height="26" rx="5"/>' +
+        '<path d="M22 28v-7a10 10 0 0 1 19-4"/>' +
+        '<circle cx="32" cy="40" r="3" fill="currentColor" stroke="none"/>' +
+        '</svg>';
+    }
+  };
+})(window);
 
 /* ===== ui.js ===== */
 /* ============================================================
@@ -6000,6 +8087,20 @@ const App = {
         if (!raw) return;
         const s = JSON.parse(raw);
         if (s && s.version === 1 && Array.isArray(s.listings)) this.state = s;
+        // миграция ОС: старым телефонам и объявлениям проставляем версию
+        if (this.state && !this.state.osv) {
+          this.state.osv = 1;
+          const fix = (x) => {
+            if (!x || x.customOS) return;
+            const m = E.MODELS_BY_ID[x.modelId];
+            if (!m) return;
+            const st = E.stockOS(m);
+            if (st) x.os = st;
+          };
+          (this.state.listings || []).forEach(fix);
+          (this.state.phones || []).forEach(fix);
+          (this.state.myListings || []).forEach(fix);
+        }
       } catch (e) { }
     },
     reset() {
@@ -6299,6 +8400,7 @@ const App = {
         '<div class="card-price">' + money(l.ask) + '</div>' +
         '<div class="card-mkt">рынок ≈ ' + money(mkt) + '</div>' +
         '<div class="card-title">' + esc(m.name) + ' ' + l.storage + ' ГБ</div>' +
+        (l.os ? '<div class="card-os">ОС: ' + esc(E.osLabel(l.os)) + '</div>' : '') +
         '<div class="card-desc">' + esc(l.desc) + '</div>' +
         '<div class="card-meta"><span class="city">' + esc(city) + '</span>' + badge + '</div>' +
         '</div></div>';
@@ -6320,7 +8422,7 @@ const App = {
         const m = E.MODELS_BY_ID[p.modelId];
         const val = E.playerValue(p);
         const known = p.defects.filter(d => d.found || d.disclosed);
-        const unknownCount = p.defects.length - known.length;
+        const unknownCount = p.defects.filter(d => !d.found && !d.disclosed && !d.checked).length;
         html += '<div class="stock-item" data-act="open-phone" data-id="' + p.id + '">' +
           '<div class="stock-top"><div class="thumb">' + thumbHTML(m) + '</div>' +
           '<div class="stock-info">' +
@@ -6332,6 +8434,10 @@ const App = {
         if (!known.length && !unknownCount) html += '<span class="dtag ok">всё чисто</span>';
         for (const d of known) html += '<span class="dtag bad">' + esc(D.DEFECTS[d.key].short) + '</span>';
         if (unknownCount) html += '<span class="dtag warn">? не проверено</span>';
+        if (p.box) html += '<span class="dtag ok">коробка</span>';
+        if (p.docs) html += '<span class="dtag ok">чек</span>';
+        if (p.charger) html += '<span class="dtag ok">зарядка</span>';
+        if (p.brick) html += '<span class="dtag bad">кирпич</span>';
         html += '</div></div></div>';
         html += '<div class="stock-actions">' +
           '<button class="btn sm" data-act="open-phone" data-id="' + p.id + '">Открыть</button>' +
@@ -6391,12 +8497,32 @@ const App = {
           WS.lotsHTML(this.state);
         return;
       }
+      if (this.appsApp === 'black' && root.Black) {
+        box.innerHTML =
+          '<div class="apps-head"><button class="apps-back" data-act="app-back">←</button><b>Чёрный рынок</b>' +
+          '<span>без гарантий</span></div>' +
+          root.Black.marketHTML(this.state);
+        return;
+      }
+      if (this.appsApp === 'jail' && root.Jail) {
+        box.innerHTML =
+          '<div class="apps-head"><button class="apps-back" data-act="app-back">←</button><b>Jailbreak</b>' +
+          '<span>взлом и прошивки</span></div>' +
+          root.Jail.viewHTML(this.state);
+        return;
+      }
       box.innerHTML =
         '<div class="apps-head"><b>Приложения</b><span>инструменты перекупа</span></div>' +
         '<div class="apps-grid">' +
         '<button class="app-tile" data-act="app-open" data-id="wholesale">' +
         '<span class="app-icon">' + (WS ? WS.appIcon() : '') + '</span>' +
         '<b>Опт</b><i>закупка лотами</i></button>' +
+        '<button class="app-tile" data-act="app-open" data-id="black">' +
+        '<span class="app-icon dark">' + (root.Black ? root.Black.icon() : '') + '</span>' +
+        '<b>Чёрный рынок</b><i>скидки 70–90%</i></button>' +
+        '<button class="app-tile" data-act="app-open" data-id="jail">' +
+        '<span class="app-icon jail">' + (root.Jail ? root.Jail.icon() : '') + '</span>' +
+        '<b>Jailbreak</b><i>загрузчик · root · ОС</i></button>' +
         '</div>';
     },
 
@@ -6404,19 +8530,9 @@ const App = {
     renderLog() {
       const box = $('#view-log');
       const s = this.state;
-      const GOAL = 500000;
-      const pct = Math.min(100, s.balance / GOAL * 100);
       const st = s.stats;
 
       let html = '<div class="prof-page">' +
-        '<div class="prof-card">' +
-        '<div class="prof-h">Прогресс</div>' +
-        '<div class="log-balance">' + money(s.balance) + '</div>' +
-        '<div class="goal-bar"><i style="width:' + pct.toFixed(1) + '%"></i></div>' +
-        '<div class="log-sub">Цель ' + money(GOAL) + ' · осталось ' + money(Math.max(0, GOAL - s.balance)) +
-        ' · ' + Math.round(pct) + '%</div>' +
-        '</div>' +
-
         '<div class="prof-card">' +
         '<div class="prof-h">Статистика</div>' +
         '<div class="stat-rows">' +
@@ -6581,7 +8697,7 @@ const App = {
       const st = $('#key-status');
       st.textContent = 'проверяю...';
       st.className = 'key-status';
-      const r = await root.AI.chat([{ role: 'user', content: 'Ответь одним словом: привет' }], { maxTokens: 10, timeout: 15000 });
+      const r = await root.AI.chat([{ role: 'user', content: 'Ответь одним словом: привет' }], { maxTokens: 10, timeout: 15000, force: true });
       if (r.ok) {
         st.textContent = 'работает: «' + r.content.slice(0, 40) + '»';
         st.className = 'key-status ok';
@@ -6637,10 +8753,6 @@ const App = {
       '<div class="field mt12"><label>Имя</label><input id="inp-name" type="text" maxlength="24" value="' + esc(p.name) + '"></div>' +
       '<div class="field mt12"><label>Город</label><input id="inp-city" type="text" maxlength="24" value="' + esc(p.city) + '"></div>' +
       '<div class="field mt12"><label>О себе</label><input id="inp-about" type="text" maxlength="90" value="' + esc(p.about) + '"></div>' +
-      '<div class="tiny muted mt8">Аватар</div>' +
-      '<div class="avatar-row" id="avatar-row">' +
-      EXTRA.AVATARS.map((a, i) => '<button class="av-btn' + (i === p.avatar ? ' on' : '') + '" data-av="' + i + '">' + a + '</button>').join('') +
-      '</div>' +
       '<div class="btn-row mt12"><button class="btn sm primary" id="btn-prof-save">Сохранить</button></div>' +
       '</div>' +
       '<div class="section-title mt12">Отзывы <span class="hint">' + r.count + '</span></div>' +
@@ -6869,6 +8981,7 @@ const App = {
       mktLine +
       '<h3>' + esc(m.name) + ' ' + l.storage + ' ГБ, ' + esc(l.color) + '</h3>' +
       '<p class="desc">' + esc(l.desc) + '</p>' +
+      (l.os ? '<div class="tiny muted" style="margin-top:6px">ОС: ' + esc(E.osLabel(l.os)) + '</div>' : '') +
       '<div class="facts">' + facts + '</div>' +
       defHTML +
       '<div class="seller-card"><div class="avatar">' + esc(l.seller.name.charAt(0)) + '</div>' +
@@ -6924,6 +9037,7 @@ const App = {
   App.renderBuyChat = function () {
     const l = this.cur.listing;
     const ov = $('#ov-chat');
+    const aiOn = root.AI.available();
     ov.innerHTML =
       '<div class="ov-head"><button class="back" id="chat-back">←</button>' +
       '<div class="avatar" style="background:linear-gradient(140deg,#5f8cff,#8f5cff)">' + esc(l.seller.name.charAt(0)) + '</div>' +
@@ -6932,17 +9046,64 @@ const App = {
       '<div class="chat-wrap" id="chat-box"></div>' +
       '<div class="composer">' +
       (l.neg.stage === 'agreed' ? '<button class="meet-cta" id="chat-meet">' + (l.isMoscow ? 'Встретиться' : 'Заказать доставку') + '</button>' : '') +
+      (!aiOn ? App.buyPresetsHTML(l) : '') +
       '<div class="input-row"><input id="chat-input" type="text" placeholder="Написать сообщение...">' +
-      '<button class="send-btn" id="chat-send">➤</button></div></div>';
+      '<button class="send-btn" id="chat-send">➤</button></div>' +
+      '</div>';
     $('#chat-back').onclick = () => { App.closeOv('chat'); };
     if ($('#chat-meet')) $('#chat-meet').onclick = () => {
       if (!l.isMoscow) { App.shippingModal(l); return; }
       App.buyAction({ type: 'meet' });
     };
+    if (!aiOn) {
+      ov.querySelectorAll('[data-bp]').forEach(b => { b.onclick = () => App.buyPreset(b.dataset.bp); });
+    }
     $('#chat-send').onclick = () => App.sendBuyText();
     $('#chat-input').addEventListener('keydown', e => { if (e.key === 'Enter') App.sendBuyText(); });
     this.renderBuyQuick();
     renderChatBox();
+  };
+
+  // готовые фразы вместо ввода, когда ИИ выключен
+  App.buyPresetsHTML = function (l) {
+    if (!l || l.neg.stage === 'lost') {
+      return '<div class="chat-presets"><div class="ws-empty">Продавец вышел из чата</div></div>';
+    }
+    const wrote = (l.chat || []).some(m => m.who === 'me');
+    const agreed = l.neg.stage === 'agreed';
+    const out = [];
+    if (!wrote) {
+      out.push({ k: 'hello', t: 'Здравствуйте, телефон ещё продаётся?' });
+      out.push({ k: 'want', t: 'Здравствуйте, хочу купить ваш телефон' });
+    }
+    if (!agreed) {
+      out.push({ k: 'offer', t: 'Предложить свою цену' });
+      out.push({ k: 'accept', t: 'Беру за ' + money(l.ask) });
+      out.push({ k: 'defect', t: 'Спросить про дефекты' });
+      out.push({ k: 'battery', t: 'Про батарею' });
+      out.push({ k: 'docs', t: 'Документы и коробка?' });
+    }
+    out.push({ k: 'meet', t: 'Давайте встретимся' });
+    out.push({ k: 'leave', t: 'Спасибо, не актуально' });
+    return '<div class="chat-presets">' + out.map(p =>
+      '<button class="preset-btn" data-bp="' + p.k + '">' + esc(p.t) + '</button>').join('') + '</div>';
+  };
+
+  App.buyPreset = function (k) {
+    const l = this.cur && this.cur.listing;
+    if (!l) return;
+    if (k === 'hello') return this.buyAction({ type: 'talk' }, 'Здравствуйте, телефон ещё продаётся?');
+    if (k === 'want') return this.buyAction({ type: 'talk' }, 'Здравствуйте, хочу купить ваш телефон.');
+    if (k === 'offer') return this.offerModal('buy');
+    if (k === 'accept') return this.buyAction({ type: 'accept', price: l.ask });
+    if (k === 'defect') return this.buyAction({ type: 'ask', topic: 'defect' });
+    if (k === 'battery') return this.buyAction({ type: 'ask', topic: 'battery' });
+    if (k === 'docs') return this.buyAction({ type: 'ask', topic: 'documents' });
+    if (k === 'meet') {
+      if (!l.isMoscow) return this.shippingModal(l);
+      return this.buyAction({ type: 'meet' });
+    }
+    if (k === 'leave') return this.buyAction({ type: 'leave' });
   };
 
   App.renderBuyQuick = function () {
@@ -7043,7 +9204,7 @@ const App = {
     let act = null;
     if (AI.available()) {
       try {
-        act = await AI.parseIntent(txt, { role: 'buy', listing: l });
+        act = await AI.parseIntent(txt, { role: 'buy', listing: l, chat: l.chat });
       } catch (e) { act = null; }
     }
     removeTyping(think2);
@@ -7186,6 +9347,7 @@ const App = {
   App.finishTurn = function () {
     this.busy = false;
     this.syncBuyMeetButton();
+    if (!root.AI.available() && this.cur && this.cur.kind === 'buy') this.renderBuyChat();
     this.save();
     this.render();
   };
@@ -7464,9 +9626,10 @@ const App = {
     const p = this.cur.phone;
     const m = E.MODELS_BY_ID[p.modelId];
     const val = E.playerValue(p);
-    const opts = E.repairOptions(p);
-    const unrepairable = (p.defects || []).filter(d => d && D.DEFECTS[d.key] && D.DEFECTS[d.key].repair === null && !D.DEFECTS[d.key].cosmetic);
-    const unknown = p.defects.filter(d => !d.found && !d.disclosed);
+    const knownKeys = p.defects.filter(d => d.found || d.disclosed).map(d => d.key);
+    const opts = E.repairOptions(p).filter(o => knownKeys.indexOf(o.key) >= 0);
+    const unrepairable = (p.defects || []).filter(d => (d.found || d.disclosed) && d && D.DEFECTS[d.key] && D.DEFECTS[d.key].repair === null && !D.DEFECTS[d.key].cosmetic);
+    const unknown = p.defects.filter(d => !d.found && !d.disclosed && !d.checked);
 
     let defectHTML = '';
     if (!p.defects.length) {
@@ -7475,6 +9638,8 @@ const App = {
     for (const d of p.defects) {
       const def = D.DEFECTS[d.key];
       const known = d.found || d.disclosed;
+      // проверял и ничего не нашёл — не пугаем игрока
+      if (!known && d.checked) continue;
       const title = def ? def.name : (d.title || 'Неизвестная неисправность');
       defectHTML += '<div class="defect-line' + (known ? '' : ' warn') + '">' +
         (known ? '⚠ ' : '? ') + esc(title) + (known ? '' : ' <span class="tiny">(не проверено)</span>') + '</div>';
@@ -7509,16 +9674,25 @@ const App = {
         ? '<img src="data:image/jpeg;base64,' + root.MODEL_PHOTO[m.id] + '" alt="">' : '') + '</div>' +
       '<div class="price-row"><div class="price-big">' + money(val) + '</div><div class="price-sub">столько он стоит по-вашему</div></div>' +
       '<div class="facts"><span class="pill blue">' + p.storage + ' ГБ</span><span class="pill">' + esc(p.color) + '</span>' +
+      (p.os ? '<span class="pill">' + esc(E.osLabel(p.os)) + '</span>' : '') +
+      (p.brick ? '<span class="pill" style="background:#fdecec;color:#e5484d">кирпич</span>' : '') +
       (m.code ? '<span class="pill" style="font-family:ui-monospace,monospace">' + esc(m.code) + '</span>' : '') +
       (p.listed ? '<span class="pill amber">на продаже</span>' : '') + '</div>' +
       '<div class="section-title mt16">Состояние</div>' + defectHTML +
       (unknown.length ? '<div class="hint-line">Вопросы помечены «?» — вы их не проверяли. Покупатель может найти сам.</div>' : '') +
+      '<div class="section-title mt16">Комплект</div>' +
+      '<div class="kit-list">' +
+      '<div class="kit-row"><span>Коробка</span><b class="' + (p.box ? 'has' : 'no') + '">' + (p.box ? 'есть' : 'нет') + '</b></div>' +
+      '<div class="kit-row"><span>Чек</span><b class="' + (p.docs ? 'has' : 'no') + '">' + (p.docs ? 'есть' : 'нет') + '</b></div>' +
+      '<div class="kit-row"><span>Зарядка</span><b class="' + (p.charger ? 'has' : 'no') + '">' + (p.charger ? 'есть' : 'нет') + '</b></div>' +
+      '</div>' +
       (repairHTML ? '<div class="section-title mt16">Ремонт</div>' + repairHTML : '') +
       (unrepairable.length ? '<div class="warn-line">' + esc(unrepairable.map(d => D.DEFECTS[d.key].name).join(', ')) + ' — не чинится. Такой телефон берут только на запчасти.</div>' : '') +
       '<div class="stock-item mt12" style="padding:10px">' +
       '<div class="tiny muted">Потрачено: ' + money(spend) + ' · при продаже по рынку: <b class="' + (pot >= 0 ? 'pos' : 'neg') + '">' + (pot >= 0 ? '+' : '') + money(pot) + '</b></div>' +
       '</div>' +
       '<div class="meet-actions mt12">' +
+      (unknown.length ? '<button class="btn" id="phone-check">Проверить телефон · ' + money(500) + '</button>' : '') +
       '<button class="btn"' + (this.state.mainPhoneId === p.id ? ' disabled' : '') + ' id="btn-main">' +
       (this.state.mainPhoneId === p.id ? '★ Твой основной телефон' : 'Сделать моим телефоном') + '</button>' +
       (p.listed
@@ -7532,6 +9706,7 @@ const App = {
       b.onclick = () => App.doRepair(b.dataset.rep, b.dataset.q);
     });
     if ($('#btn-list')) $('#btn-list').onclick = () => App.listModal(p);
+    if ($('#phone-check')) $('#phone-check').onclick = () => App.checkPhone(p);
     if ($('#btn-main')) $('#btn-main').onclick = () => App.makeMain(p);
     if ($('#btn-unlist')) $('#btn-unlist').onclick = () => App.unlist(p);
     if ($('#btn-scrap')) $('#btn-scrap').onclick = () => App.doScrap(p);
@@ -7544,6 +9719,18 @@ const App = {
     this.save();
     this.render();
     this.renderPhone();
+  };
+
+  App.checkPhone = function (p) {
+    const cost = 500;
+    if (this.state.balance < cost) { this.toast('Не хватает денег на проверку', 'bad'); return; }
+    this.state.balance -= cost;
+    for (const d of p.defects) d.found = true;
+    this.save();
+    this.renderHeader();
+    this.toast('Проверка: ' + (p.defects.length ? p.defects.length + ' дефект(а) найдено' : 'всё чисто'), p.defects.length ? 'warn' : 'good');
+    this.renderPhone();
+    this.render();
   };
 
   App.doRepair = function (key, quality) {
@@ -7584,7 +9771,7 @@ const App = {
   App.listModal = function (p) {
     const sugg = E.suggestPrice(p);
     const known = p.defects.filter(d => d.found || d.disclosed);
-    const unknown = p.defects.filter(d => !d.found && !d.disclosed);
+    const unknown = p.defects.filter(d => !d.found && !d.disclosed && !d.checked);
     let defList = '';
     for (const d of known) defList += '<div class="defect-line">⚠ ' + esc(D.DEFECTS[d.key].name) + '</div>';
 
@@ -7702,13 +9889,13 @@ const App = {
       if (!b.chat.length) pushMsg(b.chat, 'sys', 'Покупатель пишет по вашему объявлению');
       if (!App.state.chatHintShown) {
         App.state.chatHintShown = true;
-        if (App.toast) setTimeout(() => App.toast('Пишите обычным текстом — игра поймёт', ''), 500);
+        if (App.toast) setTimeout(() => App.toast(root.AI.available() ? 'Пишите обычным текстом — игра поймёт' : 'Выбирайте готовую фразу внизу', ''), 500);
       }
       let opener = '';
       try {
         opener = AI.opening({ kind: 'sell', buyer: b, listing: l });
       } catch (e) {
-        opener = (b.agreesAsIs ? 'Здравствуйте! Беру по вашей цене, если всё как на фото.' : 'Здравствуйте! Телефон ещё актуален?');
+        opener = (b.agreesAsIs ? 'Здравствуйте! Беру по вашей цене, если всё как в описании.' : 'Здравствуйте! Телефон ещё актуален?');
       }
       pushMsg(b.chat, 'them', opener || 'Здравствуйте! Телефон ещё актуален?');
     }
@@ -7748,6 +9935,7 @@ const App = {
     const b = this.cur.buyer;
     const m = E.MODELS_BY_ID[l.modelId];
     const ov = $('#ov-chat');
+    const aiOn = root.AI.available();
     ov.innerHTML =
       '<div class="ov-head"><button class="back" id="chat-back">←</button>' +
       '<div class="avatar" style="background:linear-gradient(140deg,#ff8a5c,#ff5c8a)">' + esc(b.personaName.charAt(0)) + '</div>' +
@@ -7757,13 +9945,109 @@ const App = {
       '<div class="chat-wrap" id="chat-box"></div>' +
       '<div class="composer">' +
       (b.stage === 'agreed' ? '<button class="meet-cta" id="chat-meet">Встретиться</button>' : '') +
+      (!aiOn ? App.sellPresetsHTML(l, b) : '') +
       '<div class="input-row"><input id="chat-input" type="text" placeholder="Написать покупателю...">' +
-      '<button class="send-btn" id="chat-send">➤</button></div></div>';
+      '<button class="send-btn" id="chat-send">➤</button></div>' +
+      '</div>';
     $('#chat-back').onclick = () => App.closeOv('chat');
     if ($('#chat-meet')) $('#chat-meet').onclick = () => App.sellAction({ type: 'meet' });
+    if (!aiOn) {
+      ov.querySelectorAll('[data-sp]').forEach(x => { x.onclick = () => App.sellPreset(x.dataset.sp); });
+    }
     $('#chat-send').onclick = () => App.sendSellText();
     $('#chat-input').addEventListener('keydown', e => { if (e.key === 'Enter') App.sendSellText(); });
     renderChatBox();
+  };
+
+  // готовые фразы вместо ввода, когда ИИ выключен
+  App.lastThemText = function (chat) {
+    for (let i = (chat || []).length - 1; i >= 0; i--) if (chat[i].who === 'them') return chat[i].text || '';
+    return '';
+  };
+
+  App.answerTruth = function (topic, p) {
+    if (!p) return 'Всё как в описании.';
+    const nameOf = k => (D.DEFECTS[k] ? D.DEFECTS[k].name.toLowerCase() : '');
+    const has = k => (p.defects || []).some(d => d.key === k);
+    if (topic === 'battery') {
+      return has('battery') ? 'Честно: батарея изношена, держит плохо.' : 'С батареей всё нормально, день держит.';
+    }
+    if (topic === 'docs') {
+      const kit = [p.box ? 'коробка' : '', p.docs ? 'чек' : '', p.charger ? 'зарядка' : ''].filter(Boolean);
+      return kit.length ? 'Есть ' + kit.join(', ') + '.' : 'Коробки и чека нет, только телефон.';
+    }
+    if (topic === 'repair') {
+      const rep = (p.repaired || []).map(r => nameOf(r.key)).filter(Boolean);
+      if (rep.length) return 'Ремонт был: ' + rep.join(', ') + '.';
+      return 'Не вскрывался, всё родное.';
+    }
+    const bad = (p.defects || []).filter(d => !d.disclosed).map(d => nameOf(d.key)).filter(Boolean);
+    if (bad.length) return 'Есть нюансы: ' + bad.join(', ') + '.';
+    return 'Внешне всё нормально, без сколов.';
+  };
+
+  App.answerLie = function (topic) {
+    if (topic === 'battery') return 'Батарея отличная, день держит без проблем.';
+    if (topic === 'docs') return 'Всё есть: коробка, чек и зарядка.';
+    if (topic === 'repair') return 'Не вскрывался, всё родное.';
+    if (topic === 'condition') return 'Всё идеально, ни одной царапины.';
+    return 'Всё отлично.';
+  };
+
+  App.sellPresetsHTML = function (l, b) {
+    if (!b || b.stage === 'lost') {
+      return '<div class="chat-presets"><div class="ws-empty">Покупатель закрыл чат</div></div>';
+    }
+    const phone = this.state.phones.find(p => p.id === l.phoneId);
+    const hidden = phone ? phone.defects.filter(d => !d.disclosed && !d.found).length : 0;
+    const wrote = (b.chat || []).some(mm => mm.who === 'me');
+    const agreed = b.stage === 'agreed';
+    const out = [];
+    const lastThem = this.lastThemText(b.chat);
+    const qTopic = /\?\s*$/.test(lastThem.trim()) ? root.AI.topicOf(lastThem) : '';
+    const askable = { battery: 1, docs: 1, condition: 1, repair: 1 };
+    if (!agreed && qTopic && askable[qTopic]) {
+      out.push({ k: 'truth', t: 'Сказать правду', cls: 'truth' });
+      out.push({ k: 'lie', t: 'Солгать: всё отлично', cls: 'lie' });
+    }
+    if (!wrote) out.push({ k: 'hello', t: 'Да, актуален. Что интересует?' });
+    if (!agreed) {
+      out.push({ k: 'trade', t: 'Готов немного уступить' });
+      if (b.offer) out.push({ k: 'accept', t: 'Согласен за ' + money(b.offer) });
+      out.push({ k: 'offer', t: 'Назвать свою цену' });
+      if (hidden) out.push({ k: 'disclose', t: 'Рассказать про дефект' });
+    }
+    out.push({ k: 'meet', t: 'Давайте встретимся' });
+    out.push({ k: 'leave', t: 'Передумал продавать' });
+    return '<div class="chat-presets">' + out.map(p =>
+      '<button class="preset-btn ' + (p.cls || '') + '" data-sp="' + p.k + '">' + esc(p.t) + '</button>').join('') + '</div>';
+  };
+
+  App.sellPreset = function (k) {
+    const b = this.cur && this.cur.buyer;
+    if (!b) return;
+    const phone = this.state.phones.find(p => p.id === this.cur.listing.phoneId);
+    const topic = root.AI.topicOf(this.lastThemText(b.chat));
+    if (k === 'truth') {
+      const text = this.answerTruth(topic, phone);
+      const hidden = phone ? phone.defects.filter(d => !d.disclosed && !d.found) : [];
+      if (hidden.length && topic !== 'docs') {
+        const pickDef = hidden.find(d => d.key === topic) || hidden.find(d => d.key === 'battery') || hidden[0];
+        return this.sellAction({ type: 'disclose', key: pickDef.key }, text);
+      }
+      return this.sellAction({ type: 'talk', answer: true }, text);
+    }
+    if (k === 'lie') {
+      if (phone) { phone.lied = true; phone.liedTopic = topic; }
+      return this.sellAction({ type: 'talk', answer: true }, this.answerLie(topic));
+    }
+    if (k === 'hello') return this.sellAction({ type: 'talk' }, 'Да, актуален. Что интересует?');
+    if (k === 'trade') return this.sellAction({ type: 'talk' }, 'Могу немного уступить. Сколько предлагаете?');
+    if (k === 'accept') return this.sellAction({ type: 'accept' });
+    if (k === 'offer') return this.offerModal('sell');
+    if (k === 'disclose') return this.sellAction({ type: 'disclose' });
+    if (k === 'meet') return this.sellAction({ type: 'meet' });
+    if (k === 'leave') return this.sellRefuse('Извините, не готов отдавать за эти деньги.');
   };
 
   // одна зелёная кнопка «Встретиться» после договорённости о цене
@@ -7824,6 +10108,7 @@ const App = {
     b.stage = 'lost';
     renderChatBox();
     this.syncMeetButton();
+    if (!root.AI.available() && this.cur && this.cur.kind === 'sell') this.renderSellChat();
     this.save();
     this.renderTabs();
   };
@@ -7852,6 +10137,17 @@ const App = {
     return { type: 'talk' };
   }
 
+  // согласие имеет смысл, только если покупатель только что говорил о цене или покупке
+  function lastThemAllowsDeal(chat) {
+    for (let i = (chat || []).length - 1; i >= 0; i--) {
+      const m = chat[i];
+      if (m.who !== 'them') continue;
+      const t = String(m.text || '').toLowerCase();
+      return /(беру|забира|по рукам|договор|давай|готов|цена|стоит|\d)/.test(t);
+    }
+    return false;
+  }
+
   App.sendSellText = async function () {
     if (this.busy) return;
     const inp = $('#chat-input');
@@ -7869,12 +10165,20 @@ const App = {
     let act = null;
     if (AI.available()) {
       try {
-        act = await AI.parseIntent(txt, { role: 'sell', listing: this.cur.listing, buyer: b });
+        act = await AI.parseIntent(txt, { role: 'sell', listing: this.cur.listing, buyer: b, chat: b.chat });
       } catch (e) { act = null; }
     }
     removeTyping(think1);
     this.busy = false;
     if (!act) act = sellIntentFromText(txt);
+    // «да» на «беру по вашей цене» — это согласие, а не болтовня
+    const lastThem = this.lastThemText(b.chat);
+    if (act.type !== 'accept' &&
+        /^(да|ага|угу|ок|окей|конечно|давай|беру|согласен|согласна)[.!,\s]*$/i.test(txt) &&
+        /(беру|забираю|по рукам|готов взять|договор)/i.test(lastThem)) {
+      act = { type: 'accept' };
+    }
+    if (act.type === 'accept' && !lastThemAllowsDeal(b.chat)) act = { type: 'talk' };
     if (act.type === 'leave') { this.sellRefuse(txt, true); return; }
     this.sellAction(act, null, true);
   };
@@ -7922,7 +10226,7 @@ const App = {
         setTimeout(() => App.openMeetingSell(), 500);
         return;
       }
-      const out = await withTyping(() => AI.buyerReply({ buyer: b, listing: this.cur.listing, intent: intent, chat: b.chat }));
+      const out = await withTyping(() => AI.buyerReply({ buyer: b, listing: this.cur.listing, intent: intent, chat: b.chat, phone: this.state.phones.find(p => p.id === this.cur.listing.phoneId) }));
       pushMsg(b.chat, 'them', (out && out.text) || '...');
       if (out && out.via === 'local' && AI.available() && !this._warnedAI) {
         this._warnedAI = true;
@@ -7947,6 +10251,7 @@ const App = {
     const pr = document.querySelector('#ov-chat .ov-price');
     if (pr) pr.textContent = money(this.cur.listing.ask);
     this.syncMeetButton();
+    if (!root.AI.available() && this.cur && this.cur.kind === 'sell') this.renderSellChat();
     this.save();
     this.render();
   };
@@ -8370,6 +10675,12 @@ const App = {
   const App = root.App;
   if (!App) return;
 
+  // жидкое стекло: по умолчанию включено, если не выключено в настройках
+  try {
+    if (localStorage.getItem('mide.glass') === 'on') document.documentElement.classList.add('glass-on');
+    else document.documentElement.classList.remove('glass-on');
+  } catch (e) {}
+
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   }
@@ -8572,7 +10883,6 @@ const App = {
       (p.photo
         ? '<img class="av-photo' + (p.photo ? ' on' : '') + '" id="av-photo" src="' + p.photo + '" alt="">'
         : '') +
-      root.EXTRA.AVATARS.map((a, i) => '<button class="av-btn' + (!p.photo && i === p.avatar ? ' on' : '') + '" data-av="' + i + '">' + a + '</button>').join('') +
       '</div>' +
       '<div class="btn-row mt8">' +
       '<label class="btn sm" style="cursor:pointer;text-align:center">Загрузить фото' +
@@ -8704,9 +11014,17 @@ const App = {
       '<div class="tiny muted">Характер и цифры считает игра, нейросеть только формулирует реплики.</div>' +
       '<div class="field mt12"><label>API-ключ DeepSeek</label>' +
       '<input id="inp-key" class="key-input" type="password" placeholder="sk-..." value="' + esc(root.AI.key || '') + '">' +
-      '<div class="key-status" id="key-status">' + (root.AI.available() ? 'ключ сохранён' : 'ключ не задан — диалоги на шаблонах') + '</div></div>' +
+      '<div class="key-status" id="key-status">' + (root.AI.available() ? 'ключ сохранён, полный режим включён' : (root.AI.key ? 'ключ есть, полный режим выключен' : 'ключ не задан — диалоги на шаблонах')) + '</div></div>' +
       '<div class="btn-row"><button class="btn primary" id="btn-key-save">Сохранить</button>' +
       '<button class="btn" id="btn-key-test">Проверить</button></div>' +
+      '<div class="row mt12" style="display:flex;align-items:center;gap:10px">' +
+      '<div style="flex:1"><b style="font-size:13px">Полный режим (ИИ)</b>' +
+      '<div class="tiny muted">Выключи — игра пойдёт на готовых ответах, без интернета</div></div>' +
+      '<div class="switch' + (root.AI.available() ? ' on' : '') + '" id="sw-ai-mode"></div></div>' +
+      '<div class="row mt12" style="display:flex;align-items:center;gap:10px">' +
+      '<div style="flex:1"><b style="font-size:13px">Жидкое стекло</b>' +
+      '<div class="tiny muted">Преломление и размытие панелей. Только для относительно мощных смартфонов.</div></div>' +
+      '<div class="switch' + (document.documentElement.classList.contains('glass-on') ? ' on' : '') + '" id="sw-glass"></div></div>' +
       '<div class="tiny muted mt8">Ключ хранится только у тебя на устройстве и уходит напрямую в DeepSeek.</div>' +
       '<div class="key-buy">Купить ключ можно у ' +
       '<a href="https://t.me/webslopp_manager" target="_blank" rel="noopener noreferrer">@webslopp_manager</a></div>' +
@@ -8757,9 +11075,27 @@ const App = {
       root.AI.setKey(k);
       const st = $('#key-status');
       st.textContent = 'проверяем...';
-      const r = await root.AI.chat([{ role: 'user', content: 'Ответь одним словом: работает' }], { maxTokens: 20 });
+      const r = await root.AI.chat([{ role: 'user', content: 'Ответь одним словом: работает' }], { maxTokens: 20, force: true });
       if (r.ok) { st.textContent = 'ключ рабочий'; st.className = 'key-status ok'; App.toast('Ключ рабочий', 'good'); }
       else { st.textContent = 'ошибка: ' + r.error; st.className = 'key-status bad'; }
+    };
+    const swMode = $('#sw-ai-mode');
+    if (swMode) swMode.onclick = () => {
+      if (!root.AI.key) { App.toast('Сначала введи и сохрани ключ', 'bad'); return; }
+      const on = !root.AI.available();
+      root.AI.setEnabled(on);
+      App.renderSettings();
+      if (App.cur && App.cur.kind === 'sell') App.renderSellChat();
+      if (App.cur && App.cur.kind === 'buy') App.renderBuyChat();
+      App.toast(on ? 'Полный режим включён' : 'Обычный режим: играем без интернета', on ? 'good' : '');
+    };
+    const swGlass = $('#sw-glass');
+    if (swGlass) swGlass.onclick = () => {
+      const on = !document.documentElement.classList.contains('glass-on');
+      document.documentElement.classList.toggle('glass-on', on);
+      try { localStorage.setItem('mide.glass', on ? 'on' : 'off'); } catch (e) {}
+      App.renderSettings();
+      App.toast(on ? 'Жидкое стекло включено' : 'Жидкое стекло выключено', on ? 'good' : '');
     };
     $('#btn-mode').onclick = () => App.modeModal && App.modeModal();
     $('#btn-export').onclick = () => {
@@ -8768,8 +11104,13 @@ const App = {
     };
     $('#btn-reset').onclick = () => {
       if (!confirm('Начать заново? Прогресс пропадёт.')) return;
-      try { localStorage.removeItem('mide.save'); } catch (e) {}
-      location.reload();
+      try {
+        localStorage.removeItem('mide.save.v1');
+        localStorage.removeItem('avitoFlip.save.v2');
+        localStorage.removeItem('mide.save');
+      } catch (e) {}
+      App.reset();
+      App.go('feed');
     };
   };
 
