@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <title>Mide Simulator — перепродажа телефонов</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230aa2f5'/%3E%3Crect x='10' y='6' width='12' height='20' rx='3.5' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
 <style>
 /* ============================================================
@@ -3192,15 +3193,16 @@ html body.ov-open .av-bottom{ display:none !important; }
   --lg-modal: var(--av-card, #15181e);
 }
 html.glass-on{
-  --lg-surface: rgba(255,255,255,.055);
-  --lg-surface-2: rgba(255,255,255,.09);
-  --lg-border: rgba(255,255,255,.13);
-  --lg-hi: inset 0 1px 0 rgba(255,255,255,.18), inset 0 0 0 1px rgba(255,255,255,.035);
-  --lg-shadow: 0 10px 30px rgba(0,0,0,.24);
-  --lg-blur: blur(22px) saturate(170%);
-  --lg-blur-sm: blur(12px) saturate(140%);
-  --lg-bar: rgba(17,20,26,.52);
-  --lg-modal: rgba(21,24,31,.88);
+  /* обычные поверхности остаются плотными, как без стекла */
+  --lg-surface: var(--av-card, #15181e);
+  --lg-surface-2: var(--av-sub, #1a1e25);
+  --lg-border: rgba(255,255,255,.16);
+  --lg-hi: inset 0 1px 0 rgba(255,255,255,.14), inset 0 0 0 1px rgba(255,255,255,.03);
+  --lg-shadow: 0 10px 26px rgba(0,0,0,.22);
+  --lg-blur: blur(2px) saturate(185%) url(#lg-refract);
+  --lg-blur-sm: blur(1px) saturate(170%) url(#lg-refract);
+  --lg-bar: rgba(16,19,26,.62);
+  --lg-modal: rgba(20,23,30,.74);
 }
 html[data-theme="light"]{
   --lg-surface: #ffffff;
@@ -3235,26 +3237,7 @@ html.glass-on[data-theme="light"]{
   box-shadow: var(--lg-shadow) !important;
 }
 
-/* поверхности */
-.stock-item, .prof-card, .jb-card, .jb-btn, .jb-os, .ws-btn,
-.field input, .key-input, .av-search, .msg.them, .av-pill{
-  background: var(--lg-surface) !important;
-  border: 1px solid var(--lg-border) !important;
-  box-shadow: var(--lg-shadow), var(--lg-hi) !important;
-  backdrop-filter: var(--lg-blur-sm) !important;
-  -webkit-backdrop-filter: var(--lg-blur-sm) !important;
-}
-.av-search{ border-color: rgba(10,162,245,.55) !important; }
-
-/* кнопки */
-.btn.ghost, .theme-row .btn:not(.primary), .qbtn{
-  background: var(--lg-surface) !important;
-  border: 1px solid var(--lg-border) !important;
-  box-shadow: var(--lg-hi) !important;
-  backdrop-filter: var(--lg-blur-sm) !important;
-  -webkit-backdrop-filter: var(--lg-blur-sm) !important;
-  color: var(--av-ink) !important;
-}
+/* поверхности: в стеклянном режиме карточки, поля и кнопки остаются как в обычном */
 .theme-row .btn.primary{ color:#fff !important; background:var(--mide-grad) !important; }
 
 /* «мои» сообщения */
@@ -3397,6 +3380,167 @@ html.glass-on[data-theme="light"] .app-tile[data-id="jail"] .app-icon{ color: #0
 }
 .prof-card .field{ margin-bottom: 12px; }
 
+/* ---------- мастерская ---------- */
+.app-icon.shop{ background:linear-gradient(160deg,#243026,#121a14) !important; color:#7ee0a1 !important; }
+html.glass-on .app-tile[data-id="workshop"] .app-icon{ background: rgba(126,224,161,.14) !important; color:#b8ffd0 !important; }
+html.glass-on[data-theme="light"] .app-tile[data-id="workshop"] .app-icon{ color:#0d7a3c !important; }
+.wp-card{
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 20px; padding: 12px; margin-bottom: 12px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.24);
+}
+.wp-svg{ width:100%; max-width:250px; display:block; margin:0 auto; }
+.wp-zone{ fill:#1b2330; stroke:rgba(255,255,255,.22); stroke-width:1.4; transition:fill .2s ease, stroke .2s ease; cursor:pointer; }
+.wp-zone.ok{ fill:#17251d; stroke:#2f8f57; }
+.wp-zone.warn{ fill:#2a2413; stroke:#d99a00; }
+.wp-zone.bad{ fill:#2e1719; stroke:#e5484d; }
+.wp-zone:active{ fill:#24303f; }
+.wp-lens{ fill:rgba(255,255,255,.16); stroke:rgba(255,255,255,.32); stroke-width:1; }
+.wp-dot{ fill:rgba(255,255,255,.14); }
+.wp-trace{ stroke:rgba(255,255,255,.18); stroke-width:1.5; fill:none; }
+.wp-label{ fill:rgba(255,255,255,.55); font-size:11px; font-weight:600; pointer-events:none; }
+.wp-legend{ display:flex; gap:14px; justify-content:center; margin-top:10px; font-size:11px; color:var(--av-muted); }
+.wp-legend i{ display:inline-block; width:9px; height:9px; border-radius:3px; margin-right:5px; vertical-align:middle; }
+.wp-legend i.ok{ background:#12a150; }
+.wp-legend i.warn{ background:#d99a00; }
+.wp-legend i.bad{ background:#e5484d; }
+.wp-hint{ font-size:11.5px; color:var(--av-muted); margin:0 2px 12px; line-height:1.45; }
+.wp-repair{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:10px; margin-top:10px; }
+.wp-trick{ margin-top:12px; padding:12px; border-radius:14px; border:1px dashed rgba(10,162,245,.45); background:rgba(10,162,245,.06); }
+
+/* винты и крышка */
+.wp-cover{ fill: #12151b; stroke: rgba(255,255,255,.16); stroke-width:1.5; }
+.wp-cover-text{ fill: rgba(255,255,255,.82); font-size:12px; font-weight:600; }
+.wp-cover-text.small{ fill: rgba(255,255,255,.5); font-size:10px; font-weight:500; }
+.wp-screw{ cursor:pointer; transform-box: fill-box; transform-origin:center; transition:opacity .2s ease; }
+.wp-screw circle{ fill:#4a5262; stroke:#9aa5b6; stroke-width:1.5; }
+.wp-screw path{ stroke:#d7dee8; stroke-width:1.6; }
+.wp-hole{ fill:#0a0c10 !important; stroke: rgba(255,255,255,.14) !important; }
+.wp-screw.lost circle{ fill:#3a1f1f !important; stroke:#e5484d !important; }
+.wp-screw.lost path{ display:none; }
+.wp-screw-turn{ animation: screwTurn .24s ease; }
+@keyframes screwTurn{ from{ transform: rotate(0deg); } to{ transform: rotate(180deg); } }
+html[data-theme="light"] .wp-cover{ fill:#dbe2ea; stroke:#b7c0cc; }
+html[data-theme="light"] .wp-cover-text{ fill:#3a4150; }
+html[data-theme="light"] .wp-cover-text.small{ fill:#6b7480; }
+html[data-theme="light"] .wp-screw circle{ fill:#dfe4ec; stroke:#8b95a5; }
+html[data-theme="light"] .wp-screw path{ stroke:#5b6472; }
+html[data-theme="light"] .wp-hole{ fill:#c2cad6 !important; }
+html[data-theme="light"] .wp-card{ background:#fff; border-color:rgba(15,17,22,.08); box-shadow:0 10px 26px rgba(16,24,40,.08); }
+html[data-theme="light"] .wp-zone{ fill:#e9edf2; stroke:#c7ced8; }
+html[data-theme="light"] .wp-zone.ok{ fill:#e4f5ea; stroke:#12a150; }
+html[data-theme="light"] .wp-zone.warn{ fill:#fdf3dc; stroke:#d99a00; }
+html[data-theme="light"] .wp-zone.bad{ fill:#fbe7e8; stroke:#e5484d; }
+html[data-theme="light"] .wp-label{ fill:#4a5260; }
+html[data-theme="light"] .wp-repair{ background:rgba(15,17,22,.03); border-color:rgba(15,17,22,.06); }
+html[data-theme="light"] .wp-trick{ background:rgba(10,162,245,.07); }
+
+/* стекло — только панели и окна */
+html.glass-on .av-header,
+html.glass-on .av-bottom,
+html.glass-on .overlay .ov-head,
+html.glass-on .composer{
+  backdrop-filter: blur(3px) saturate(190%) url(#lg-refract) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(190%) !important;
+}
+html.glass-on .modal{
+  backdrop-filter: blur(4px) saturate(190%) url(#lg-refract) !important;
+  -webkit-backdrop-filter: blur(4px) saturate(190%) !important;
+  box-shadow: 0 40px 100px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.2) !important;
+}
+html.glass-on .switch{
+  backdrop-filter: blur(2px) saturate(190%) url(#lg-refract) !important;
+  -webkit-backdrop-filter: blur(2px) saturate(190%) !important;
+}
+
+/* ============================================================
+   Полировка: читаемость и живые анимации
+   ============================================================ */
+html[data-theme="dark"]{ --av-muted:#9aa5b4; --muted:#9aa5b4; }
+body{ -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+.card-title{ font-weight:650 !important; }
+.card-desc{ font-size:12.5px !important; line-height:1.5 !important; }
+.card-mkt{ font-size:11.5px !important; }
+.card-meta{ font-size:11px !important; }
+.section-title{ font-size:17px !important; font-weight:750 !important; letter-spacing:-.01em; }
+.overlay .detail h3{ font-size:20px !important; font-weight:750 !important; }
+.tiny{ font-size:11px !important; }
+.av-balance-m, #balance{ font-variant-numeric:tabular-nums; }
+
+.btn.sm{ min-height:36px; }
+
+.btn.primary{
+  background-size:180% 180% !important;
+  animation:gradShift 7s ease infinite;
+}
+@keyframes gradShift{ 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+.view.active{ animation:viewIn .24s cubic-bezier(.22,1,.36,1); }
+
+.stock-item, .jb-phone{ will-change:transform; }
+@media (hover:hover){
+  .stock-item:hover{ transform:translateY(-2px); box-shadow:0 18px 40px rgba(0,0,0,.3), var(--lg-hi); }
+  .card:hover .thumb{ transform:translateY(-4px) scale(1.01); }
+  .app-tile:hover .app-icon{ transform:translateY(-3px) scale(1.04); }
+}
+.app-tile .app-icon{ transition:transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; }
+.app-tile:active .app-icon{ transform:scale(.93); }
+
+.av-nav.on svg{ animation:navPop .38s cubic-bezier(.34,1.56,.64,1); }
+@keyframes navPop{ 0%{ transform:scale(.82); } 60%{ transform:scale(1.12); } 100%{ transform:scale(1.06); } }
+
+.msg{ transition:transform .16s ease, background .2s ease; }
+.msg.me:active{ transform:scale(.985); }
+.typing span i{ animation-duration:.9s; }
+
+.stock-item:active, .jb-phone:active{ transform:scale(.992); }
+.btn:active, .preset-btn:active, .jb-btn:active{ transform:scale(.97); }
+
+.modal-wrap.open{ animation:fadeIn .18s ease-out; }
+
+/* тумблеры: упругая анимация и свечение */
+.switch::after{
+  transition: left .34s cubic-bezier(.34,1.56,.64,1), width .2s ease, transform .18s ease, background .25s ease !important;
+}
+.switch:active::after{ transform:none !important; width:26px !important; }
+.switch.on:active::after{ left:18px !important; }
+.switch.on{ box-shadow: 0 0 0 3px rgba(18,161,80,.13), inset 0 1px 2px rgba(0,0,0,.18) !important; }
+html.glass-on .switch.on{ box-shadow: 0 0 0 3px rgba(10,162,245,.15), inset 0 1px 0 rgba(255,255,255,.35), 0 6px 16px rgba(0,0,0,.22) !important; }
+
+/* окна в стекле — светлее кромка и блик */
+html.glass-on .modal{
+  background-image: linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,0) 46%) !important;
+  border-color: rgba(255,255,255,.20) !important;
+}
+
+/* таблица лидеров */
+.lb-list{ display:flex; flex-direction:column; }
+.lb-row{ display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--av-line,#252a33); font-size:13px; }
+.lb-row:last-child{ border-bottom:0; }
+.lb-rank{ width:28px; text-align:center; font-weight:700; color:var(--av-muted,#8d97a5); font-size:12px; }
+.lb-name{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.lb-name i{ font-style:normal; font-size:10px; color:var(--mide-accent); font-weight:800; text-transform:uppercase; letter-spacing:.04em; }
+.lb-cap{ font-weight:700; font-variant-numeric:tabular-nums; }
+.lb-row.me, .lb-row.me .lb-rank, .lb-row.me .lb-cap{ color:var(--mide-accent); }
+.lb-row.me{ font-weight:700; }
+
+/* анимация тумблеров */
+.switch{ overflow:visible !important; }
+.switch::before{
+  content:""; position:absolute; inset:-2px; border-radius:999px; pointer-events:none; opacity:0;
+}
+.switch.on::before{ animation:swWave .55s ease-out; }
+@keyframes swWave{ 0%{ opacity:1; box-shadow:0 0 0 0 rgba(18,161,80,.55); } 100%{ opacity:0; box-shadow:0 0 0 18px rgba(18,161,80,0); } }
+html.glass-on .switch.on::before{ animation-name:swWaveBlue; }
+@keyframes swWaveBlue{ 0%{ opacity:1; box-shadow:0 0 0 0 rgba(10,162,245,.6); } 100%{ opacity:0; box-shadow:0 0 0 18px rgba(10,162,245,0); } }
+.switch.on::after{ animation:knobOn .45s cubic-bezier(.34,1.56,.64,1); }
+.switch:not(.on)::after{ animation:knobOff .4s cubic-bezier(.34,1.56,.64,1); }
+@keyframes knobOn{ 0%{ transform:scale(.75); } 60%{ transform:scale(1.18); } 100%{ transform:scale(1); } }
+@keyframes knobOff{ 0%{ transform:scale(1.18); } 100%{ transform:scale(1); } }
+.switch.on{ animation:trackOn .4s cubic-bezier(.34,1.56,.64,1); }
+@keyframes trackOn{ 0%{ transform:scale(.96); } 60%{ transform:scale(1.04); } 100%{ transform:scale(1); } }
+
 </style>
 <script>try{if(localStorage.getItem('mide.glass')==='on')document.documentElement.classList.add('glass-on');}catch(e){}</script>
 </head>
@@ -3404,8 +3548,8 @@ html.glass-on[data-theme="light"] .app-tile[data-id="jail"] .app-icon{ color: #0
 <svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
   <defs>
     <filter id="lg-refract" x="-30%" y="-30%" width="160%" height="160%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="2" seed="7" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.014" numOctaves="3" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="32" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
   </defs>
 </svg>
@@ -7913,6 +8057,117 @@ window.DESK_PHOTO = [];
   };
 })(window);
 
+/* ===== leaderboard.js ===== */
+/* ============================================================
+   MIDE — настоящая таблица лидеров через Telegram + Supabase.
+   ============================================================ */
+(function (root) {
+  'use strict';
+
+  const SB_URL = 'https://kilndmcqywqspnrwojnu.supabase.co';
+  const SB_KEY = 'sb_publishable_zJjNHyxItNtqoOPh3a_G0A_quLkdA6k';
+  const HDR = {
+    'apikey': SB_KEY,
+    'Authorization': 'Bearer ' + SB_KEY,
+    'Content-Type': 'application/json'
+  };
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  }
+  function money(n) {
+    return new Intl.NumberFormat('ru-RU').format(Math.round(n || 0)) + ' ₽';
+  }
+
+  function tgUser() {
+    const t = root.Telegram && root.Telegram.WebApp;
+    if (!t) return null;
+    try { t.ready(); t.expand(); } catch (e) { }
+    const u = t.initDataUnsafe && t.initDataUnsafe.user;
+    if (!u || !u.id) return null;
+    const name = [u.first_name, u.last_name].filter(Boolean).join(' ') || u.username || 'Игрок';
+    return { id: u.id, name: name };
+  }
+
+  function capital(state) {
+    const phones = (state.phones || []).reduce((sum, p) => sum + root.Engine.playerValue(p), 0);
+    return Math.max(0, Math.round(state.balance + phones));
+  }
+
+  function submit(state) {
+    const u = tgUser();
+    if (!u || !state || !state.stats) return;
+    const body = [{
+      tg_id: u.id,
+      name: u.name,
+      capital: capital(state),
+      profit: Math.round(state.stats.profit || 0),
+      deals: state.stats.sold || 0,
+      updated_at: new Date().toISOString()
+    }];
+    try {
+      fetch(SB_URL + '/rest/v1/scores', {
+        method: 'POST',
+        headers: Object.assign({ 'Prefer': 'resolution=merge-duplicates,return=minimal' }, HDR),
+        body: JSON.stringify(body)
+      }).catch(function () { });
+    } catch (e) { }
+  }
+
+  async function fetchTop() {
+    const r = await fetch(SB_URL + '/rest/v1/scores?select=tg_id,name,capital,profit,deals&order=capital.desc&limit=20', { headers: HDR });
+    if (!r.ok) throw new Error('http ' + r.status);
+    return await r.json();
+  }
+
+  function cardHTML() {
+    return '<div class="prof-card">' +
+      '<div class="prof-h">Таблица лидеров <span class="muted">Telegram</span></div>' +
+      '<div class="lb-list" id="lb-body"><div class="ws-empty">Загрузка…</div></div>' +
+      '<div class="tiny muted" style="margin-top:8px">Капитал: деньги + стоимость склада. Обновляется автоматически.</div>' +
+      '</div>';
+  }
+
+  async function load(state) {
+    const box = document.getElementById('lb-body');
+    if (!box) return;
+    const u = tgUser();
+    if (!u) {
+      box.innerHTML = '<div class="ws-empty">Рейтинг работает в Telegram. Открой игру через бота <b>@MideSimBot</b>.</div>';
+      return;
+    }
+    submit(state);
+    try {
+      const rows = await fetchTop();
+      if (!rows.length) { box.innerHTML = '<div class="ws-empty">Пока никого нет — ты будешь первым.</div>'; return; }
+      box.innerHTML = rows.map(function (x, i) {
+        const place = i + 1;
+        const medal = place === 1 ? '🥇' : place === 2 ? '🥈' : place === 3 ? '🥉' : place;
+        const me = String(x.tg_id) === String(u.id);
+        return '<div class="lb-row' + (me ? ' me' : '') + '">' +
+          '<span class="lb-rank">' + medal + '</span>' +
+          '<span class="lb-name">' + esc(x.name) + (me ? ' <i>ты</i>' : '') + '</span>' +
+          '<span class="lb-cap">' + money(x.capital) + '</span></div>';
+      }).join('');
+    } catch (e) {
+      box.innerHTML = '<div class="ws-empty">Не удалось загрузить рейтинг.</div>';
+    }
+  }
+
+  // отправляем результат раз в минуту, пока игра открыта
+  setInterval(function () {
+    if (root.App && root.App.state && tgUser()) submit(root.App.state);
+  }, 60000);
+
+  root.Leaderboard = {
+    cardHTML: cardHTML,
+    load: load,
+    submit: submit,
+    user: tgUser,
+    capital: capital
+  };
+})(window);
+
 /* ===== ui.js ===== */
 /* ============================================================
    AVITO FLIP — интерфейс: состояние, лента, склад, объявления
@@ -8544,6 +8799,8 @@ const App = {
         '<div class="stat-row"><span>День</span><b>' + s.day + '</b></div>' +
         '</div></div>' +
 
+        (root.Leaderboard ? root.Leaderboard.cardHTML() : '') +
+
         '<div class="prof-card">' +
         '<div class="prof-h">Сделки <span class="muted">' + (s.deals || []).length + '</span></div>' +
         ((s.deals || []).length ? (s.deals || []).slice(0, 40).map(function (d) {
@@ -8578,6 +8835,7 @@ const App = {
         '</div></div>';
 
       box.innerHTML = html;
+      if (root.Leaderboard) root.Leaderboard.load(s);
     }
   };
 
@@ -11084,7 +11342,7 @@ const App = {
       if (!root.AI.key) { App.toast('Сначала введи и сохрани ключ', 'bad'); return; }
       const on = !root.AI.available();
       root.AI.setEnabled(on);
-      App.renderSettings();
+      swMode.classList.toggle('on', on);
       if (App.cur && App.cur.kind === 'sell') App.renderSellChat();
       if (App.cur && App.cur.kind === 'buy') App.renderBuyChat();
       App.toast(on ? 'Полный режим включён' : 'Обычный режим: играем без интернета', on ? 'good' : '');
@@ -11094,7 +11352,7 @@ const App = {
       const on = !document.documentElement.classList.contains('glass-on');
       document.documentElement.classList.toggle('glass-on', on);
       try { localStorage.setItem('mide.glass', on ? 'on' : 'off'); } catch (e) {}
-      App.renderSettings();
+      swGlass.classList.toggle('on', on);
       App.toast(on ? 'Жидкое стекло включено' : 'Жидкое стекло выключено', on ? 'good' : '');
     };
     $('#btn-mode').onclick = () => App.modeModal && App.modeModal();
